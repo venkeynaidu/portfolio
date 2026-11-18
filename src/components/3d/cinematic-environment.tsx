@@ -8,7 +8,7 @@ interface CinematicEnvironmentProps {
   sceneIndex: number;
 }
 
-function CyberMatrixParticles({ count = 120 }: { count?: number }) {
+function LuminousParticles({ count = 100 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null!);
 
   const [positions, colors] = useMemo(() => {
@@ -16,17 +16,16 @@ function CyberMatrixParticles({ count = 120 }: { count?: number }) {
     const cols = new Float32Array(count * 3);
 
     const palette = [
-      new THREE.Color("#00f0ff"), // Neon Cyan
-      new THREE.Color("#38bdf8"), // Electric Sky Blue
-      new THREE.Color("#a855f7"), // Neon Violet
-      new THREE.Color("#10b981"), // Matrix Emerald
-      new THREE.Color("#f59e0b"), // Cyber Amber
+      new THREE.Color("#38bdf8"), // Sky blue
+      new THREE.Color("#c084fc"), // Lavender
+      new THREE.Color("#fb923c"), // Warm peach
+      new THREE.Color("#818cf8"), // Indigo
     ];
 
     for (let i = 0; i < count; i++) {
-      coords[i * 3] = (Math.random() - 0.5) * 18;
-      coords[i * 3 + 1] = (Math.random() - 0.5) * 12 + 1;
-      coords[i * 3 + 2] = (Math.random() - 0.5) * 12;
+      coords[i * 3] = (Math.random() - 0.5) * 16;
+      coords[i * 3 + 1] = (Math.random() - 0.5) * 10 + 1;
+      coords[i * 3 + 2] = (Math.random() - 0.5) * 10;
 
       const c = palette[i % palette.length];
       cols[i * 3] = c.r;
@@ -38,8 +37,8 @@ function CyberMatrixParticles({ count = 120 }: { count?: number }) {
 
   useFrame((_, delta) => {
     if (!pointsRef.current) return;
-    pointsRef.current.rotation.y += delta * 0.04;
-    pointsRef.current.rotation.x += delta * 0.02;
+    pointsRef.current.rotation.y += delta * 0.03;
+    pointsRef.current.rotation.x += delta * 0.015;
   });
 
   return (
@@ -49,12 +48,11 @@ function CyberMatrixParticles({ count = 120 }: { count?: number }) {
         <bufferAttribute attach="attributes-color" args={[colors, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.05}
+        size={0.045}
         vertexColors
         transparent
-        opacity={0.75}
+        opacity={0.65}
         sizeAttenuation
-        blending={THREE.AdditiveBlending}
       />
     </points>
   );
@@ -65,8 +63,8 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
 
   useFrame((_, delta) => {
     if (keyLightRef.current) {
-      // Dynamic spotlight intensity by scene
-      const targetIntensity = sceneIndex === 2 ? 4.2 : sceneIndex === 5 ? 4.0 : 3.5;
+      // Modulate key light intensity based on active scene
+      const targetIntensity = sceneIndex === 2 ? 3.4 : sceneIndex === 5 ? 3.2 : 2.8;
       keyLightRef.current.intensity = THREE.MathUtils.lerp(
         keyLightRef.current.intensity,
         targetIntensity,
@@ -77,60 +75,57 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
 
   return (
     <>
-      {/* Deep Techno Obsidian Cyber Void */}
-      <color attach="background" args={["#030712"]} />
-      <fogExp2 attach="fog" args={["#030712", 0.048]} />
+      {/* Bright Pearl Sky & Atmospheric Fog */}
+      <color attach="background" args={["#f8fafc"]} />
+      <fogExp2 attach="fog" args={["#f1f5f9", 0.045]} />
 
-      {/* Deep Cyber Ambient Lighting */}
-      <ambientLight intensity={0.65} color="#0b1736" />
+      {/* Daylight Ambient Illumination */}
+      <ambientLight intensity={1.05} color="#f8fafc" />
 
-      {/* Main Overhead Cyber Spotlight */}
+      {/* Main Architectural Key Light with Soft Shadows */}
       <spotLight
         ref={keyLightRef}
-        position={[6, 11, 7]}
+        position={[7, 12, 7]}
         angle={0.65}
         penumbra={0.8}
-        intensity={3.5}
-        color="#00f0ff"
+        intensity={2.8}
+        color="#ffffff"
         castShadow
         shadow-mapSize={[1024, 1024]}
         shadow-bias={-0.0001}
       />
 
-      {/* Neon Electric Blue Directional Fill */}
-      <directionalLight position={[-7, 6, 4]} intensity={2.2} color="#0ea5e9" />
+      {/* Electric Sky Blue Fill Light */}
+      <directionalLight position={[-8, 6, 4]} intensity={1.5} color="#38bdf8" />
 
-      {/* Neon Violet Rim Light */}
-      <pointLight position={[0, 4, -4]} intensity={3.0} color="#a855f7" />
+      {/* Violet / Lavender Rim Light */}
+      <pointLight position={[0, 5, -4.5]} intensity={2.6} color="#c084fc" />
 
-      {/* Emerald Telemetry Server Glow */}
-      <pointLight position={[-4, -1, 3]} intensity={1.8} color="#10b981" />
+      {/* Warm Peach & Amber Accent Highlight */}
+      <pointLight position={[4, -1, 3]} intensity={1.3} color="#fb923c" />
 
-      {/* Warm Amber Core Pulse */}
-      <pointLight position={[4, -1.2, 2.5]} intensity={1.4} color="#f59e0b" />
-
-      {/* Dark Obsidian Reflective Cyber Floor */}
+      {/* Luminous Pearl White Architectural Reflective Floor */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -1.86, 0]}
         receiveShadow
       >
-        <planeGeometry args={[50, 50]} />
+        <planeGeometry args={[44, 44]} />
         <meshStandardMaterial
-          color="#030712"
-          roughness={0.06}
-          metalness={0.92}
+          color="#f1f5f9"
+          roughness={0.2}
+          metalness={0.25}
         />
       </mesh>
 
-      {/* Glowing Cyan & Slate Cyber Grid Plane */}
+      {/* Clean Subtle Grid Lines on Floor */}
       <gridHelper
-        args={[50, 50, "#00f0ff", "#1e293b"]}
+        args={[44, 44, "#cbd5e1", "#e2e8f0"]}
         position={[0, -1.85, 0]}
       />
 
-      {/* Drifting Cyber Data Particles */}
-      <CyberMatrixParticles count={130} />
+      {/* Floating Luminous Color Dust */}
+      <LuminousParticles count={110} />
     </>
   );
 }

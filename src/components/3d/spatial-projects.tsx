@@ -12,7 +12,7 @@ interface SpatialProjectsProps {
 export function SpatialProjects({ visible }: SpatialProjectsProps) {
   const groupRef = useRef<THREE.Group>(null!);
 
-  // Load authentic project screenshots
+  // Load real project screenshots copied from project assets
   const [textureProgress, textureConnection, textureHistory] = useTexture([
     "/projects/progress-results.png",
     "/projects/connection.png",
@@ -39,9 +39,9 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
       <Float speed={1.6} rotationIntensity={0.15} floatIntensity={0.3} position={[0.8, 0.75, 0.2]}>
         <RoundedBox args={[2.5, 1.45, 0.04]} radius={0.04} smoothness={4} castShadow>
           <meshStandardMaterial
-            color="#070d1e"
-            roughness={0.2}
-            metalness={0.7}
+            color="#ffffff"
+            roughness={0.15}
+            metalness={0.3}
           />
         </RoundedBox>
 
@@ -51,15 +51,10 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
           <meshBasicMaterial map={textureProgress} />
         </mesh>
 
-        <mesh position={[0, 0.06, 0.028]}>
-          <planeGeometry args={[2.38, 1.24]} />
-          <meshBasicMaterial color="#00f0ff" wireframe transparent opacity={0.3} />
-        </mesh>
-
         <Text
           position={[-1.15, -0.6, 0.03]}
           fontSize={0.09}
-          color="#00f0ff"
+          color="#0f172a"
           anchorX="left"
           anchorY="middle"
         >
@@ -77,9 +72,9 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
       >
         <RoundedBox args={[2.4, 1.4, 0.04]} radius={0.04} smoothness={4} castShadow>
           <meshStandardMaterial
-            color="#070d1e"
-            roughness={0.2}
-            metalness={0.7}
+            color="#ffffff"
+            roughness={0.15}
+            metalness={0.3}
           />
         </RoundedBox>
 
@@ -89,15 +84,10 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
           <meshBasicMaterial map={textureConnection} />
         </mesh>
 
-        <mesh position={[0, 0.05, 0.028]}>
-          <planeGeometry args={[2.28, 1.2]} />
-          <meshBasicMaterial color="#a855f7" wireframe transparent opacity={0.3} />
-        </mesh>
-
         <Text
           position={[-1.1, -0.58, 0.03]}
           fontSize={0.085}
-          color="#a855f7"
+          color="#0f172a"
           anchorX="left"
           anchorY="middle"
         >
@@ -115,9 +105,9 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
       >
         <RoundedBox args={[2.2, 1.3, 0.04]} radius={0.04} smoothness={4} castShadow>
           <meshStandardMaterial
-            color="#070d1e"
-            roughness={0.2}
-            metalness={0.7}
+            color="#ffffff"
+            roughness={0.15}
+            metalness={0.3}
           />
         </RoundedBox>
 
@@ -126,15 +116,10 @@ export function SpatialProjects({ visible }: SpatialProjectsProps) {
           <meshBasicMaterial map={textureHistory} />
         </mesh>
 
-        <mesh position={[0, 0.05, 0.028]}>
-          <planeGeometry args={[2.1, 1.12]} />
-          <meshBasicMaterial color="#f59e0b" wireframe transparent opacity={0.3} />
-        </mesh>
-
         <Text
           position={[-1.0, -0.54, 0.03]}
           fontSize={0.08}
-          color="#f59e0b"
+          color="#0f172a"
           anchorX="left"
           anchorY="middle"
         >

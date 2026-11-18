@@ -82,7 +82,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-transparent text-slate-100 selection:bg-cyan-500 selection:text-black">
+    <div className="relative min-h-screen bg-transparent text-slate-900 selection:bg-sky-500 selection:text-white">
       {/* Custom Mouse Cursor */}
       <CustomCursor />
 
