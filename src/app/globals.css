@@ -20,65 +20,25 @@
 }
 
 /*
- * Cyber Midnight High-Contrast Technical Theme
- * Engineered for 100% crisp readability, rich dark backgrounds, and vibrant neon accents.
+ * Modern Multi-Color Technical Portfolio Theme
+ * Engineered for 100% crisp readability, rich colorful combinations, and high-contrast typography.
  */
-@theme {
-  /* Electric Sky Blue */
-  --color-sky-50: #082f49;
-  --color-sky-100: #0c4a6e;
-  --color-sky-200: #0284c7;
-  --color-sky-300: #38bdf8;
-  --color-sky-400: #38bdf8;
-  --color-sky-500: #0ea5e9;
-  --color-sky-600: #0284c7;
-  --color-sky-700: #7dd3fc;
-  --color-sky-800: #bae6fd;
-  --color-sky-900: #e0f2fe;
-  --color-sky-950: #f0f9ff;
-
-  /* Indigo / Cyber Blue */
-  --color-indigo-50: #1e1b4b;
-  --color-indigo-100: #312e81;
-  --color-indigo-200: #3730a3;
-  --color-indigo-300: #6366f1;
-  --color-indigo-400: #818cf8;
-  --color-indigo-500: #6366f1;
-  --color-indigo-600: #a5b4fc;
-  --color-indigo-700: #c7d2fe;
-  --color-indigo-800: #e0e7ff;
-  --color-indigo-900: #eef2ff;
-
-  /* High-Contrast Light-on-Dark Slate Scale */
-  --color-slate-50: #0b1120;
-  --color-slate-100: #0f172a;
-  --color-slate-200: #1e293b;
-  --color-slate-300: #334155;
-  --color-slate-400: #64748b;
-  --color-slate-500: #94a3b8;
-  --color-slate-600: #cbd5e1;
-  --color-slate-700: #e2e8f0;
-  --color-slate-800: #f1f5f9;
-  --color-slate-900: #ffffff;
-  --color-slate-950: #ffffff;
-}
-
 :root {
-  --background: #070b16;
+  --background: #0a0f1d;
   --foreground: #f8fafc;
-  --card: #0e1628;
+  --card: #111a2e;
   --card-foreground: #ffffff;
   --primary: #0ea5e9;
   --primary-foreground: #ffffff;
   --muted: #1e293b;
-  --muted-foreground: #94a3b8;
+  --muted-foreground: #cbd5e1;
   --border: #1e293b;
   --radius: 0.85rem;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #070b16;
+  background-color: #0a0f1d;
   color: #f8fafc;
 }
 
@@ -88,18 +48,18 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Cyber Technical Grid */
+/* Multi-Color Technical Ambient Grid */
 .bg-futuristic-grid {
   background-image:
-    linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(129, 140, 248, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-/* Solid, High-Contrast Glass Card (Zero Washed-Out Opacity) */
+/* Solid High-Contrast Multi-Color Cards (Zero Washed-Out Opacity) */
 .pearl-glass {
-  background: #0d1527;
-  border: 1px solid rgba(56, 189, 248, 0.22);
+  background: #111a2e;
+  border: 1px solid rgba(56, 189, 248, 0.28);
   box-shadow:
     0 20px 40px -15px rgba(0, 0, 0, 0.85),
     0 0 0 1px rgba(255, 255, 255, 0.06) inset;
@@ -107,29 +67,81 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pearl-glass:hover {
-  border-color: rgba(56, 189, 248, 0.6);
+  border-color: rgba(56, 189, 248, 0.65);
   box-shadow:
-    0 25px 50px -12px rgba(14, 165, 233, 0.25),
-    0 0 0 1px rgba(56, 189, 248, 0.2) inset;
+    0 25px 50px -12px rgba(14, 165, 233, 0.3),
+    0 0 0 1px rgba(56, 189, 248, 0.25) inset;
+}
+
+/* Distinct Vibrant Color Combinations */
+.vibrant-card-cyan {
+  background: linear-gradient(145deg, #0e172a 0%, #0d233a 100%);
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(14, 165, 233, 0.15);
+}
+.vibrant-card-cyan:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 20px 45px -10px rgba(14, 165, 233, 0.35);
+}
+
+.vibrant-card-emerald {
+  background: linear-gradient(145deg, #0a1f18 0%, #0d281e 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(16, 185, 129, 0.15);
+}
+.vibrant-card-emerald:hover {
+  border-color: #34d399;
+  box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.35);
+}
+
+.vibrant-card-purple {
+  background: linear-gradient(145deg, #17112c 0%, #22143d 100%);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(168, 85, 247, 0.15);
+}
+.vibrant-card-purple:hover {
+  border-color: #c084fc;
+  box-shadow: 0 20px 45px -10px rgba(168, 85, 247, 0.35);
+}
+
+.vibrant-card-amber {
+  background: linear-gradient(145deg, #1f1709 0%, #2b1f09 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(245, 158, 11, 0.15);
+}
+.vibrant-card-amber:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 20px 45px -10px rgba(245, 158, 11, 0.35);
+}
+
+.vibrant-card-rose {
+  background: linear-gradient(145deg, #241119 0%, #301421 100%);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  box-shadow: 0 16px 36px -10px rgba(244, 63, 94, 0.15);
+}
+.vibrant-card-rose:hover {
+  border-color: #fb7185;
+  box-shadow: 0 20px 45px -10px rgba(244, 63, 94, 0.35);
 }
 
 /* Neon Holo Border */
 .holo-border {
   border: 1px solid rgba(56, 189, 248, 0.4);
-  background: #0d1527;
+  background: #111a2e;
 }
 
 /* Luminous Accent Glows */
 .glow-sky {
-  box-shadow: 0 0 35px -5px rgba(14, 165, 233, 0.35);
+  box-shadow: 0 0 35px -5px rgba(14, 165, 233, 0.4);
 }
-
 .glow-violet {
-  box-shadow: 0 0 35px -5px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 35px -5px rgba(168, 85, 247, 0.4);
 }
-
 .glow-emerald {
-  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.4);
+}
+.glow-amber {
+  box-shadow: 0 0 35px -5px rgba(245, 158, 11, 0.4);
 }
 
 @layer base {

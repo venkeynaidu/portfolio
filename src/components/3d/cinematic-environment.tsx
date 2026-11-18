@@ -51,67 +51,45 @@ function GlassPartitionWall() {
   );
 }
 
-// Executive High-Rise Office Backdrop based on user-supplied reference photo
-function OfficePanoramaBackdrop() {
-  const texture = useTexture("/executive-office-bg.jpg");
-
-  useMemo(() => {
-    if (texture) {
-      texture.colorSpace = THREE.SRGBColorSpace;
-      texture.minFilter = THREE.LinearFilter;
-      texture.generateMipmaps = false;
-    }
-  }, [texture]);
-
-  return (
-    <group position={[0, 0.5, -4.6]}>
-      {/* High-Resolution Executive Conference & City Skyline Backdrop */}
-      <mesh>
-        <planeGeometry args={[14.2, 10.6]} />
-        <meshBasicMaterial map={texture} toneMapped={false} />
-      </mesh>
-    </group>
-  );
-}
-
 export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) {
   return (
     <>
-      {/* Deep Midnight Studio Tone */}
-      <color attach="background" args={["#070b16"]} />
-
-      {/* Executive Conference Room & Skyline Backdrop */}
-      <OfficePanoramaBackdrop />
+      {/* Deep Rich Navy Studio Environment */}
+      <color attach="background" args={["#0a0f1d"]} />
 
       {/* Ambient Daylight & Interior Fill */}
-      <ambientLight intensity={1.3} color="#f0f9ff" />
+      <ambientLight intensity={1.4} color="#f0f9ff" />
 
-      {/* Main Architectural Daylight Key Light */}
+      {/* Main Architectural Key Light */}
       <directionalLight
         position={[6, 8, 4]}
-        intensity={2.4}
+        intensity={2.2}
         color="#ffffff"
       />
 
       {/* Electric Sky Blue Horizon Rim Light */}
-      <directionalLight position={[-6, 4, 2]} intensity={1.2} color="#38bdf8" />
+      <directionalLight position={[-6, 4, 2]} intensity={1.5} color="#38bdf8" />
 
-      {/* Sleek Dark Reflective Architectural Floor */}
+      {/* Vibrant Purple & Emerald Accent Lights for Multi-Color Depth */}
+      <pointLight position={[4, 2, -2]} intensity={2.0} color="#a855f7" distance={12} />
+      <pointLight position={[-4, 3, -1]} intensity={1.5} color="#10b981" distance={10} />
+
+      {/* Sleek Architectural Studio Floor */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -1.86, 0]}
       >
         <planeGeometry args={[36, 36]} />
         <meshStandardMaterial
-          color="#0d1527"
+          color="#0f172a"
           roughness={0.25}
-          metalness={0.3}
+          metalness={0.4}
         />
       </mesh>
 
       {/* Subtle Studio Floor Grid */}
       <gridHelper
-        args={[36, 36, "#1e293b", "#0f172a"]}
+        args={[36, 36, "#38bdf8", "#1e293b"]}
         position={[0, -1.85, 0]}
       />
 
@@ -122,7 +100,7 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
       <group position={[1.4, 2.1, -1.2]} rotation={[0, -0.25, 0]}>
         <mesh>
           <boxGeometry args={[0.04, 0.04, 2.8]} />
-          <meshStandardMaterial color="#d4af37" metalness={0.85} roughness={0.2} />
+          <meshStandardMaterial color="#38bdf8" metalness={0.85} roughness={0.2} />
         </mesh>
         <mesh position={[0, -0.02, 0]}>
           <boxGeometry args={[0.03, 0.01, 2.76]} />
@@ -132,5 +110,3 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
     </>
   );
 }
-
-useTexture.preload("/executive-office-bg.jpg");

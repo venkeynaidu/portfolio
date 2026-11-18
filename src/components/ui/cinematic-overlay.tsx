@@ -75,52 +75,47 @@ export function CinematicOverlay() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-30" aria-hidden>
-      {/* Opening fade from ivory */}
+      {/* Subtle fade-in on mount */}
       <motion.div
-        className="absolute inset-0 bg-[#f4efe7]"
+        className="absolute inset-0 bg-[#0a0f1d]"
         initial={{ opacity: 1 }}
         animate={{ opacity: opened ? 0 : 1 }}
-        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      {/* Letterbox bars */}
+      {/* Modern Slim Accent Bars */}
       <motion.div
-        className="absolute inset-x-0 top-0 bg-[#121212]"
-        animate={{ height: showChapter ? "6vh" : "0vh" }}
-        transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
+        className="absolute inset-x-0 top-0 bg-slate-950/80 border-b border-sky-500/20"
+        animate={{ height: showChapter ? "3vh" : "0vh" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       />
       <motion.div
-        className="absolute inset-x-0 bottom-0 bg-[#121212]"
-        animate={{ height: showChapter ? "6vh" : "0vh" }}
-        transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
+        className="absolute inset-x-0 bottom-0 bg-slate-950/80 border-t border-sky-500/20"
+        animate={{ height: showChapter ? "3vh" : "0vh" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       />
 
-      {/* Lower-third chapter card */}
+      {/* Lower-third chapter card with crisp high-contrast colors */}
       <AnimatePresence mode="wait">
         {showChapter && (
           <motion.div
             key={chapter.key}
-            className="absolute left-4 sm:left-12 bottom-[9vh] max-w-[min(560px,calc(100vw-2rem))]"
-            initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-4 sm:left-12 bottom-[6vh] max-w-[min(560px,calc(100vw-2rem))] p-4 rounded-2xl bg-slate-950/85 border border-sky-500/40 backdrop-blur-md shadow-2xl"
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-3 mb-2">
-              <motion.span
-                className="block h-px bg-[#a87b42]"
-                initial={{ width: 0 }}
-                animate={{ width: 48 }}
-                transition={{ duration: 0.9, delay: 0.15 }}
-              />
-              <span className="text-[11px] tracking-[0.35em] uppercase text-[#6f4f2c] font-medium">
-                Chapter {chapter.number}
+            <div className="flex items-center gap-2.5 mb-1.5">
+              <span className="block h-1.5 w-6 rounded-full bg-gradient-to-r from-sky-400 to-indigo-500" />
+              <span className="text-[11px] tracking-widest uppercase text-sky-400 font-mono font-bold">
+                Scene {chapter.number}
               </span>
             </div>
-            <h3 className="font-display text-3xl sm:text-5xl leading-[1.05] text-[#1c1917] drop-shadow-[0_2px_18px_rgba(244,239,231,0.9)]">
+            <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-tight">
               {chapter.title}
             </h3>
-            <p className="mt-2 text-sm sm:text-base text-[#44403c] drop-shadow-[0_1px_10px_rgba(244,239,231,0.95)]">
+            <p className="mt-1 text-xs sm:text-sm text-slate-200 font-normal">
               {chapter.subtitle}
             </p>
           </motion.div>

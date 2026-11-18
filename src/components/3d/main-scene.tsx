@@ -3,7 +3,6 @@
 import { Suspense } from "react";
 import { CinematicEnvironment } from "./cinematic-environment";
 import { CameraController } from "./camera-controller";
-import { MaleHumanPresenter } from "./male-human-presenter";
 import { HolographicWorkstation } from "./holographic-workstation";
 import { PoultryWorld } from "./worlds/poultry-world";
 import { BeverageWorld } from "./worlds/beverage-world";
@@ -37,14 +36,6 @@ export function MainScene({
       <CameraController sceneIndex={sceneIndex} scrollProgress={scrollProgress} />
 
       <Suspense fallback={null}>
-        {/* Male Human Presenter: Garaga Venkatesh with Float Animations */}
-        <MaleHumanPresenter
-          sceneIndex={sceneIndex}
-          scrollProgress={scrollProgress}
-          activeProjectWorld={activeProjectWorld}
-          activeCompanyOffice={activeCompanyOffice}
-        />
-
         {/* Scene 3: Holographic Engineering Workstation (only when active) */}
         {sceneIndex === 2 && <HolographicWorkstation visible={true} />}
 

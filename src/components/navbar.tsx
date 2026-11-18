@@ -35,20 +35,20 @@ export function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="fixed top-4 inset-x-0 z-50 flex justify-center px-4"
     >
-      <nav className="w-full max-w-5xl flex items-center justify-between px-5 py-2.5 rounded-full pearl-glass">
+      <nav className="w-full max-w-5xl flex items-center justify-between px-5 py-2.5 rounded-full bg-[#111a2e]/95 border border-sky-500/40 shadow-xl shadow-sky-500/10 backdrop-blur-md">
         {/* Brand Monogram */}
         <Link
           href="/"
           className="flex items-center gap-2.5 font-bold tracking-tight px-1 group"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-violet-500 text-white font-mono text-xs shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 text-white font-mono text-xs shadow-md shadow-sky-500/30 group-hover:scale-105 transition-transform">
             GV
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-xs font-bold tracking-tight text-slate-800 leading-tight">
+            <span className="text-xs font-bold tracking-tight text-white leading-tight">
               Garaga Venkatesh
             </span>
-            <span className="text-[10px] text-sky-600 font-mono leading-none">
+            <span className="text-[10px] text-sky-400 font-mono leading-none">
               Senior Full Stack Engineer
             </span>
           </div>
@@ -60,7 +60,7 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="px-3.5 py-1.5 rounded-full text-slate-600 hover:text-sky-600 hover:bg-sky-50/80 transition-colors"
+              className="px-3.5 py-1.5 rounded-full text-slate-200 hover:text-white hover:bg-sky-500/20 transition-colors"
             >
               {link.label}
             </Link>
@@ -74,7 +74,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="hidden sm:inline-flex items-center justify-center h-8 w-8 rounded-full border border-sky-300 bg-sky-50 text-[#0077b5] hover:bg-sky-100 transition-colors shadow-2xs"
+            className="hidden sm:inline-flex items-center justify-center h-8 w-8 rounded-full border border-sky-400/50 bg-[#0077b5]/20 text-sky-300 hover:bg-[#0077b5]/40 transition-colors shadow-sm"
           >
             <LinkedinIcon className="h-4 w-4 fill-current" />
           </a>
@@ -84,7 +84,7 @@ export function Navbar() {
             download="Garaga_Venkatesh_Resume.pdf"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex h-8 rounded-full text-xs gap-1.5 bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-500 hover:opacity-95 text-white shadow-sm font-semibold"
+              "hidden sm:inline-flex h-8 rounded-full text-xs gap-1.5 bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 hover:brightness-110 text-white shadow-md shadow-sky-500/25 font-bold border-0"
             )}
           >
             <Download className="h-3.5 w-3.5" />
@@ -94,7 +94,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 hover:bg-slate-100 text-slate-600"
+            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-200 hover:bg-slate-800"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -108,14 +108,14 @@ export function Navbar() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="absolute top-16 inset-x-4 p-4 rounded-2xl pearl-glass flex flex-col gap-2 md:hidden"
+          className="absolute top-16 inset-x-4 p-4 rounded-2xl bg-[#111a2e] border border-sky-500/40 shadow-2xl flex flex-col gap-2 md:hidden"
         >
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-sky-50 text-slate-700 hover:text-sky-600"
+              className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-slate-200 hover:text-white"
             >
               {link.label}
             </Link>
@@ -124,7 +124,7 @@ export function Navbar() {
             href={portfolioData.personal.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-sky-50 text-[#0077b5] flex items-center gap-2"
+            className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-slate-800 text-sky-400 flex items-center gap-2"
           >
             <LinkedinIcon className="h-4 w-4 fill-current" />
             <span>LinkedIn: venkatesh-garaga-89a561199</span>
@@ -134,7 +134,7 @@ export function Navbar() {
             download="Garaga_Venkatesh_Resume.pdf"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "mt-2 w-full justify-center rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold"
+              "mt-2 w-full justify-center rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold"
             )}
           >
             <Download className="h-4 w-4" />

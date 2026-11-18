@@ -62,15 +62,15 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200 relative">
+    <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-800 relative">
       <div className="flex flex-col items-center text-center mb-16">
-        <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/40 text-sky-700 bg-sky-50">
-          Chapter 06 · Let&apos;s Build Together
+        <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/50 text-sky-300 bg-sky-950/80 px-3.5 py-1">
+          Chapter 06 · Connect &amp; Collaborate
         </Badge>
-        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
           Connect &amp; Collaborate
         </h2>
-        <p className="text-slate-600 text-sm sm:text-base max-w-xl">
+        <p className="text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
           Interested in full-stack architecture, high-throughput microservices, or consulting? Reach out directly via LinkedIn, Naukri, or direct transmission.
         </p>
       </div>
@@ -79,20 +79,20 @@ export function ContactSection() {
         {/* Contact Details & Profile Channels (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* Official Profiles GUI Card */}
-          <Card className="bg-[#0d1527] p-6 sm:p-7 space-y-4 border-slate-800 shadow-xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <Card className="vibrant-card-cyan p-6 sm:p-7 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-700/80">
               <h3 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
                 <Briefcase className="h-4 w-4 text-sky-400" />
                 Verified Online Profiles
               </h3>
-              <Badge className="bg-emerald-950/80 text-emerald-300 border-emerald-700/60 text-[10px] font-mono flex items-center gap-1 font-semibold">
+              <Badge className="bg-emerald-950/90 text-emerald-300 border-emerald-500/60 text-[10px] font-mono flex items-center gap-1 font-semibold">
                 <UserCheck className="h-3 w-3" />
                 Verified
               </Badge>
             </div>
 
             {/* LinkedIn Profile Tile */}
-            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0077b5] text-white shadow-sm">
@@ -126,7 +126,7 @@ export function ContactSection() {
             </div>
 
             {/* Naukri Profile Tile */}
-            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0066cc] text-white shadow-sm">
@@ -141,16 +141,16 @@ export function ContactSection() {
                     </span>
                   </div>
                 </div>
-                <Badge className="bg-amber-950/80 text-amber-300 border-amber-700/60 text-[10px] font-mono font-semibold flex items-center gap-1">
+                <Badge className="bg-amber-950/90 text-amber-300 border-amber-500/60 text-[10px] font-mono font-semibold flex items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {portfolioData.personal.noticePeriod}
                 </Badge>
               </div>
               <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] text-slate-600">
+                <span className="text-[11px] text-slate-300">
                   Searchable by verified recruiters across India
                 </span>
-                <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-[11px] font-mono text-emerald-300 bg-emerald-950/90 px-2 py-0.5 rounded border border-emerald-500/50">
                   Active
                 </span>
               </div>
@@ -158,56 +158,56 @@ export function ContactSection() {
           </Card>
 
           {/* Direct Contact Communication Card */}
-          <Card className="pearl-glass p-6 sm:p-7 space-y-4 shadow-sm">
-            <h3 className="text-base font-bold tracking-tight text-slate-900 flex items-center gap-2">
-              <MessageSquare className="h-4 w-4 text-sky-600" />
-              Direct Contact
+          <Card className="vibrant-card-emerald p-6 sm:p-7 space-y-4 shadow-xl">
+            <h3 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
+              <MessageSquare className="h-4 w-4 text-emerald-400" />
+              Direct Communication
             </h3>
 
             <div className="space-y-3">
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-sky-600 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-950 text-sky-400 border border-sky-500/40 shrink-0 mt-0.5">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
                     Email Address
                   </span>
                   <a
                     href={`mailto:${portfolioData.personal.email}`}
-                    className="text-xs sm:text-sm font-semibold text-slate-900 hover:text-sky-600 transition-colors font-mono"
+                    className="text-xs sm:text-sm font-semibold text-white hover:text-sky-400 transition-colors font-mono"
                   >
                     {portfolioData.personal.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-500/40 shrink-0 mt-0.5">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
                     Direct Phone / WhatsApp
                   </span>
                   <a
                     href={`tel:${portfolioData.personal.phone.replace(/[^0-9+]/g, "")}`}
-                    className="text-xs sm:text-sm font-semibold text-slate-900 hover:text-sky-600 transition-colors font-mono"
+                    className="text-xs sm:text-sm font-semibold text-white hover:text-emerald-400 transition-colors font-mono"
                   >
                     {portfolioData.personal.phone}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-950 text-purple-400 border border-purple-500/40 shrink-0 mt-0.5">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
                     Current Location &amp; Base
                   </span>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-900">
+                  <span className="text-xs sm:text-sm font-semibold text-white">
                     {portfolioData.personal.location}
                   </span>
                 </div>
@@ -216,18 +216,18 @@ export function ContactSection() {
           </Card>
 
           {/* Download Resume Card */}
-          <Card className="pearl-glass p-6 sm:p-7 border-sky-300 bg-gradient-to-br from-white via-sky-50/40 to-orange-50/40 text-center space-y-4 shadow-md">
+          <Card className="vibrant-card-amber p-6 sm:p-7 text-center space-y-4 shadow-xl">
             <div className="flex justify-center">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-orange-400 text-white shadow-lg shadow-sky-500/20">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500 text-slate-950 font-bold shadow-lg shadow-amber-500/30">
                 <Download className="h-5 w-5" />
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-base text-slate-900">
+              <h4 className="font-bold text-base text-white">
                 Official Curriculum Vitae
               </h4>
-              <p className="text-xs text-slate-600 mt-1">
+              <p className="text-xs text-slate-300 mt-1">
                 Verified career documentation with complete ADA, ERP, and project architectural deliverables.
               </p>
             </div>
@@ -237,7 +237,7 @@ export function ContactSection() {
               download="Garaga_Venkatesh_Resume.pdf"
               className={cn(
                 buttonVariants({ size: "default" }),
-                "w-full rounded-xl gap-2 bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-600 hover:opacity-95 text-white shadow-md font-semibold"
+                "w-full rounded-xl gap-2 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:brightness-110 text-slate-950 shadow-md font-bold"
               )}
             >
               <Download className="h-4 w-4" />
@@ -248,11 +248,11 @@ export function ContactSection() {
 
         {/* Interactive Contact Form (7 cols) */}
         <div className="lg:col-span-7">
-          <Card className="pearl-glass p-6 sm:p-8 shadow-md">
-            <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-1">
+          <Card className="bg-[#111a2e] border border-slate-800 p-6 sm:p-8 shadow-2xl">
+            <h3 className="text-lg font-bold tracking-tight text-white mb-1">
               Send a Direct Message
             </h3>
-            <p className="text-xs text-slate-500 mb-6">
+            <p className="text-xs text-slate-300 mb-6 font-normal">
               Have an engineering opportunity, open senior full-stack role, or architectural consulting query? Send a message below.
             </p>
 
@@ -260,15 +260,15 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-3"
+                className="p-8 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-center space-y-3"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mx-auto">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-900 text-emerald-400 mx-auto">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <h4 className="font-bold text-emerald-900 text-lg">
+                <h4 className="font-bold text-white text-lg">
                   Transmission Received
                 </h4>
-                <p className="text-xs sm:text-sm text-emerald-700 max-w-sm mx-auto">
+                <p className="text-xs sm:text-sm text-slate-200 max-w-sm mx-auto font-normal">
                   Thank you for reaching out. Your message has been routed to Garaga Venkatesh. You will receive a response shortly.
                 </p>
                 <Button
@@ -278,7 +278,7 @@ export function ContactSection() {
                     setSubmitted(false);
                     setFormState({ name: "", email: "", subject: "", message: "" });
                   }}
-                  className="mt-4 border-emerald-300 text-emerald-800 hover:bg-emerald-100 rounded-lg text-xs"
+                  className="mt-4 border-emerald-400 text-emerald-300 hover:bg-emerald-900 rounded-lg text-xs"
                 >
                   Send Another Message
                 </Button>
@@ -287,7 +287,7 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label className="text-xs font-semibold text-slate-200">
                       Your Name
                     </label>
                     <input
@@ -298,12 +298,12 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormState({ ...formState, name: e.target.value })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-700">
+                    <label className="text-xs font-semibold text-slate-200">
                       Your Email Address
                     </label>
                     <input
@@ -314,13 +314,13 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormState({ ...formState, email: e.target.value })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700">
+                  <label className="text-xs font-semibold text-slate-200">
                     Subject / Discussion Topic
                   </label>
                   <input
@@ -331,12 +331,12 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, subject: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-700">
+                  <label className="text-xs font-semibold text-slate-200">
                     Message Details
                   </label>
                   <textarea
@@ -347,14 +347,14 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, message: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/30 focus:border-sky-500 transition-all resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:opacity-95 text-white font-semibold text-xs sm:text-sm py-5 shadow-md shadow-sky-500/20"
+                  className="w-full rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-semibold text-xs sm:text-sm py-5 shadow-lg shadow-sky-500/25"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">
