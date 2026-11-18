@@ -3,10 +3,13 @@
 import { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { MainScene } from "./main-scene";
+import { ProjectWorldKey, CompanyOfficeKey } from "@/context/portfolio-context";
 
 interface PersistentCanvasProps {
   sceneIndex: number;
   scrollProgress: number;
+  activeProjectWorld?: ProjectWorldKey;
+  activeCompanyOffice?: CompanyOfficeKey;
 }
 
 function WebGLFallback() {
@@ -21,6 +24,8 @@ function WebGLFallback() {
 export function PersistentCanvas({
   sceneIndex,
   scrollProgress,
+  activeProjectWorld = "poultry",
+  activeCompanyOffice = "microgenesis",
 }: PersistentCanvasProps) {
   const [mounted, setMounted] = useState(false);
   const [hasWebGL, setHasWebGL] = useState(true);
@@ -65,7 +70,12 @@ export function PersistentCanvas({
           }}
           className="w-full h-full"
         >
-          <MainScene sceneIndex={sceneIndex} scrollProgress={scrollProgress} />
+          <MainScene
+            sceneIndex={sceneIndex}
+            scrollProgress={scrollProgress}
+            activeProjectWorld={activeProjectWorld}
+            activeCompanyOffice={activeCompanyOffice}
+          />
         </Canvas>
       </Suspense>
     </div>

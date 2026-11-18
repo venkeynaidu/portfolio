@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PersistentCanvas } from "@/components/3d/persistent-canvas";
@@ -15,14 +15,21 @@ import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { SceneNav } from "@/components/ui/scene-nav";
+import { PortfolioProvider, usePortfolio } from "@/context/portfolio-context";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function Home() {
-  const [activeScene, setActiveScene] = useState<number>(0);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
+function PortfolioHome() {
+  const {
+    activeScene,
+    setActiveScene,
+    scrollProgress,
+    setScrollProgress,
+    activeProjectWorld,
+    activeCompanyOffice,
+  } = usePortfolio();
 
   useEffect(() => {
     // Total page scroll progress tracker
@@ -79,17 +86,19 @@ export default function Home() {
       window.removeEventListener("scroll", handleScroll);
       triggers.forEach((t) => t.kill());
     };
-  }, []);
+  }, [setActiveScene, setScrollProgress]);
 
   return (
     <div className="relative min-h-screen bg-transparent text-slate-900 selection:bg-sky-500 selection:text-white">
       {/* Custom Mouse Cursor */}
       <CustomCursor />
 
-      {/* Persistent 3D Three.js Studio Scene */}
+      {/* Persistent 3D Three.js Studio Scene with Dynamic Worlds & Offices */}
       <PersistentCanvas
         sceneIndex={activeScene}
         scrollProgress={scrollProgress}
+        activeProjectWorld={activeProjectWorld}
+        activeCompanyOffice={activeCompanyOffice}
       />
 
       {/* Floating Glassmorphism Navigation */}
@@ -111,5 +120,13 @@ export default function Home() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <PortfolioProvider>
+      <PortfolioHome />
+    </PortfolioProvider>
   );
 }

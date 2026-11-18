@@ -20,8 +20,11 @@ import {
   Play,
   Copy,
   Check,
+  Eye,
+  Globe2,
 } from "lucide-react";
 import { portfolioData, ProjectItem } from "@/data/portfolio-data";
+import { usePortfolio, ProjectWorldKey } from "@/context/portfolio-context";
 
 function ProjectCodeTerminal({ project }: { project: ProjectItem }) {
   const [activeTab, setActiveTab] = useState<"code" | "output">("code");
@@ -94,7 +97,6 @@ function ProjectCodeTerminal({ project }: { project: ProjectItem }) {
             </div>
             <div className="overflow-x-auto text-slate-200 whitespace-pre">
               {lines.map((line, i) => {
-                // Realistic syntax coloring
                 const isComment = line.trim().startsWith("#") || line.trim().startsWith("//");
                 const isDecorator = line.trim().startsWith("@");
                 const hasKeyword = /\b(class|def|async|await|return|import|from|with|try|except|if|for)\b/.test(line);
@@ -155,7 +157,24 @@ function ProjectCodeTerminal({ project }: { project: ProjectItem }) {
 }
 
 export function ProjectsSection() {
+  const { activeProjectWorld, setActiveProjectWorld } = usePortfolio();
   const [activeFilter, setActiveFilter] = useState<string>("all");
+
+  const getProjectWorld = (title: string, category: string): ProjectWorldKey => {
+    if (title.includes("Chicken") || title.includes("Poultry")) return "poultry";
+    if (title.includes("Food") || title.includes("SBL") || title.includes("Beverage")) return "beverage";
+    if (title.includes("VCS") || title.includes("PMS") || category.includes("Defense")) return "defence";
+    if (title.includes("Servo") || category.includes("Embedded")) return "hardware";
+    return "ecommerce";
+  };
+
+  const worldTabs = [
+    { key: "poultry" as ProjectWorldKey, icon: "🐔", label: "Poultry Farm ERP World" },
+    { key: "beverage" as ProjectWorldKey, icon: "🥤", label: "Beverage Bottling World" },
+    { key: "defence" as ProjectWorldKey, icon: "🛡️", label: "Defense Command Center" },
+    { key: "ecommerce" as ProjectWorldKey, icon: "🛍️", label: "Digital Retail Showroom" },
+    { key: "hardware" as ProjectWorldKey, icon: "⚙️", label: "Embedded Servo & Zigbee Lab" },
+  ];
 
   const filterTabs = [
     { id: "all", label: `All Systems (${portfolioData.projects.length})` },
@@ -205,27 +224,51 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200 relative">
-      <div className="flex flex-col items-center text-center mb-12">
+      <div className="flex flex-col items-center text-center mb-10">
         <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/40 text-sky-700 bg-sky-50">
-          Scene 05 // Live Architecture &amp; Deliverables
+          Scene 05 // Industry-Specific 3D Project Storytelling
         </Badge>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Enterprise Systems &amp; Live Architecture
         </h2>
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-          Verified production platforms spanning defense air-gapped AI video conferencing, mission-critical PMS, multi-enterprise supply chain ERPs, and full-stack web applications.
+          Every project features its own distinct 3D industry environment with animated equipment, live telemetry, and interactive code terminals.
         </p>
 
-        {/* Filter Navigation Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl pearl-glass max-w-3xl">
+        {/* 3D World Transformation Switcher Bar */}
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-sky-700 flex items-center gap-1.5">
+            <Globe2 className="h-3.5 w-3.5" />
+            Switch 3D Industry Environment
+          </span>
+          <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl pearl-glass max-w-3xl">
+            {worldTabs.map((world) => (
+              <button
+                key={world.key}
+                onClick={() => setActiveProjectWorld(world.key)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 ${
+                  activeProjectWorld === world.key
+                    ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/25 scale-105"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                }`}
+              >
+                <span>{world.icon}</span>
+                <span>{world.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Domain Filter Navigation Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-6 p-1 rounded-xl bg-slate-100 border border-slate-200/80 max-w-2xl">
           {filterTabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveFilter(tab.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
+              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all duration-200 ${
                 activeFilter === tab.id
-                  ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/20"
-                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                  ? "bg-white text-slate-900 shadow-xs"
+                  : "text-slate-500 hover:text-slate-900"
               }`}
             >
               {tab.label}
@@ -238,6 +281,8 @@ export function ProjectsSection() {
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => {
             const Icon = getProjectIcon(project.category, project.title);
+            const pWorld = getProjectWorld(project.title, project.category);
+            const isWorldActive = activeProjectWorld === pWorld;
 
             return (
               <motion.div
@@ -249,7 +294,14 @@ export function ProjectsSection() {
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
                 className="h-full"
               >
-                <Card className="h-full pearl-glass hover:border-sky-400/40 transition-all duration-300 flex flex-col justify-between overflow-hidden group shadow-md hover:shadow-xl">
+                <Card
+                  onClick={() => setActiveProjectWorld(pWorld)}
+                  className={`h-full pearl-glass transition-all duration-300 flex flex-col justify-between overflow-hidden group shadow-md hover:shadow-xl cursor-pointer ${
+                    isWorldActive
+                      ? "ring-2 ring-sky-400 border-sky-500 shadow-sky-100"
+                      : "hover:border-sky-400/40"
+                  }`}
+                >
                   {/* Interactive Code & Telemetry Window */}
                   <ProjectCodeTerminal project={project} />
 
@@ -266,6 +318,11 @@ export function ProjectsSection() {
                           </p>
                         )}
                       </div>
+                      {isWorldActive && (
+                        <Badge className="bg-sky-500 text-white text-[10px] font-mono shrink-0">
+                          Active 3D World
+                        </Badge>
+                      )}
                     </div>
 
                     <div className="flex items-center justify-between text-xs pt-2 flex-wrap gap-2">
@@ -301,8 +358,8 @@ export function ProjectsSection() {
                       </ul>
                     </div>
 
-                    {/* Environment Badges */}
-                    <div className="pt-2">
+                    {/* Environment Badges & 3D World Trigger */}
+                    <div className="pt-2 flex items-center justify-between flex-wrap gap-2">
                       <div className="flex flex-wrap gap-1.5">
                         {project.environment.map((tech) => (
                           <Badge
@@ -314,6 +371,21 @@ export function ProjectsSection() {
                           </Badge>
                         ))}
                       </div>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveProjectWorld(pWorld);
+                        }}
+                        className={`text-xs font-semibold px-2.5 py-1 rounded-lg flex items-center gap-1 transition-colors ${
+                          isWorldActive
+                            ? "bg-sky-500 text-white"
+                            : "text-sky-600 bg-sky-50 hover:bg-sky-100"
+                        }`}
+                      >
+                        <Eye className="h-3 w-3" />
+                        <span>{isWorldActive ? "Viewing in 3D" : "Transform 3D"}</span>
+                      </button>
                     </div>
                   </CardContent>
                 </Card>
