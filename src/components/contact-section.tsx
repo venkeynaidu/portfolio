@@ -79,30 +79,30 @@ export function ContactSection() {
         {/* Contact Details & Profile Channels (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* Official Profiles GUI Card */}
-          <Card className="pearl-glass p-6 sm:p-7 space-y-4 border-sky-200 shadow-md">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-              <h3 className="text-base font-bold tracking-tight text-slate-900 flex items-center gap-2">
-                <Briefcase className="h-4 w-4 text-sky-600" />
+          <Card className="bg-[#0d1527] p-6 sm:p-7 space-y-4 border-slate-800 shadow-xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
+                <Briefcase className="h-4 w-4 text-sky-400" />
                 Verified Online Profiles
               </h3>
-              <Badge className="bg-emerald-50 text-emerald-700 border-emerald-200 text-[10px] font-mono flex items-center gap-1 font-semibold">
+              <Badge className="bg-emerald-950/80 text-emerald-300 border-emerald-700/60 text-[10px] font-mono flex items-center gap-1 font-semibold">
                 <UserCheck className="h-3 w-3" />
                 Verified
               </Badge>
             </div>
 
             {/* LinkedIn Profile Tile */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-sky-50/80 to-blue-50/60 border border-sky-200/80 space-y-2.5">
+            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0077b5] text-white shadow-sm">
                     <LinkedinIcon className="h-5 w-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-900 block leading-tight">
+                    <span className="text-xs font-bold text-white block leading-tight">
                       LinkedIn Profile
                     </span>
-                    <span className="text-[11px] text-sky-700 font-mono">
+                    <span className="text-[11px] text-sky-400 font-mono">
                       venkatesh-garaga-89a561199
                     </span>
                   </div>
@@ -120,28 +120,28 @@ export function ContactSection() {
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>
-              <p className="text-[11px] text-slate-600 italic">
+              <p className="text-[11px] text-slate-300 italic">
                 &ldquo;{portfolioData.personal.linkedinNote}&rdquo;
               </p>
             </div>
 
             {/* Naukri Profile Tile */}
-            <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-50/80 to-blue-50/60 border border-indigo-200/80 space-y-2.5">
+            <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0066cc] text-white shadow-sm">
                     <NaukriIcon className="h-5 w-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-900 block leading-tight">
+                    <span className="text-xs font-bold text-white block leading-tight">
                       Naukri Recruiter Profile
                     </span>
-                    <span className="text-[11px] text-indigo-700 font-semibold">
+                    <span className="text-[11px] text-indigo-300 font-semibold">
                       {portfolioData.personal.naukriProfile}
                     </span>
                   </div>
                 </div>
-                <Badge className="bg-amber-100 text-amber-800 border-amber-300 text-[10px] font-mono font-semibold flex items-center gap-1">
+                <Badge className="bg-amber-950/80 text-amber-300 border-amber-700/60 text-[10px] font-mono font-semibold flex items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {portfolioData.personal.noticePeriod}
                 </Badge>

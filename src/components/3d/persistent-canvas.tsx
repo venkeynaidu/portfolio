@@ -14,7 +14,7 @@ interface PersistentCanvasProps {
 
 function WebGLFallback() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-slate-50">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#070b16]">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-sky-200/30 via-indigo-200/20 to-violet-200/30 blur-[120px] rounded-full" />
       <div className="absolute inset-0 bg-futuristic-grid opacity-60" />
     </div>

@@ -18,6 +18,11 @@ export function getCompanyKey(companyName: string): CompanyOfficeKey {
   return "arowana";
 }
 
+export function getCompanyOffice(item: { company: string } | string): CompanyOfficeKey {
+  const companyName = typeof item === "string" ? item : item.company;
+  return getCompanyKey(companyName);
+}
+
 export function getProjectsForWorld(world: ProjectWorldKey): ProjectItem[] {
   return portfolioData.projects.filter((p) => getProjectWorld(p) === world);
 }

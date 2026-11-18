@@ -12,13 +12,13 @@ interface CinematicEnvironmentProps {
 function GlassPartitionWall() {
   return (
     <group position={[1.8, 0.4, -1.8]} rotation={[0, -0.25, 0]}>
-      {/* Clear Architectural Glass Panels - Pure lightweight standard material */}
+      {/* Clear Architectural Glass Panels */}
       <mesh position={[0, 0, 0]}>
         <boxGeometry args={[0.03, 4.4, 4.8]} />
         <meshStandardMaterial
-          color="#bae6fd"
+          color="#38bdf8"
           transparent
-          opacity={0.18}
+          opacity={0.16}
           roughness={0.1}
           metalness={0.3}
         />
@@ -27,46 +27,26 @@ function GlassPartitionWall() {
       {/* Black Aluminum Structural Mullions / Frame */}
       <mesh position={[0, 2.2, 0]}>
         <boxGeometry args={[0.06, 0.08, 4.84]} />
-        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
+        <meshStandardMaterial color="#0f172a" metalness={0.9} roughness={0.25} />
       </mesh>
       <mesh position={[0, -2.2, 0]}>
         <boxGeometry args={[0.06, 0.08, 4.84]} />
-        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
+        <meshStandardMaterial color="#0f172a" metalness={0.9} roughness={0.25} />
       </mesh>
 
       {/* Vertical Mullion Posts */}
       {[-2.3, -1.15, 0, 1.15, 2.3].map((zPos, idx) => (
         <mesh key={idx} position={[0, 0, zPos]}>
           <boxGeometry args={[0.05, 4.4, 0.05]} />
-          <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
+          <meshStandardMaterial color="#0f172a" metalness={0.9} roughness={0.25} />
         </mesh>
       ))}
 
       {/* Horizontal Divider Rail */}
       <mesh position={[0, 0.9, 0]}>
         <boxGeometry args={[0.05, 0.04, 4.8]} />
-        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
+        <meshStandardMaterial color="#0f172a" metalness={0.9} roughness={0.25} />
       </mesh>
-    </group>
-  );
-}
-
-// Diagonal Window Sunlight Shadow Strips across the Floor (from reference photo)
-function SunlightFloorShadows() {
-  return (
-    <group position={[0.6, -1.84, 0.2]} rotation={[-Math.PI / 2, 0, -0.42]}>
-      {[-2.2, -1.4, -0.6, 0.2, 1.0, 1.8, 2.6].map((x, i) => (
-        <mesh key={i} position={[x, 0, 0]}>
-          <planeGeometry args={[0.42, 6.5]} />
-          <meshBasicMaterial
-            color="#fff8ed"
-            transparent
-            opacity={0.14}
-            blending={THREE.AdditiveBlending}
-            side={THREE.DoubleSide}
-          />
-        </mesh>
-      ))}
     </group>
   );
 }
@@ -97,61 +77,52 @@ function OfficePanoramaBackdrop() {
 export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) {
   return (
     <>
-      {/* Natural Daylight Sky Tone */}
-      <color attach="background" args={["#e2e8f0"]} />
+      {/* Deep Midnight Studio Tone */}
+      <color attach="background" args={["#070b16"]} />
 
-      {/* Photorealistic Executive Conference Room & Skyline Backdrop */}
+      {/* Executive Conference Room & Skyline Backdrop */}
       <OfficePanoramaBackdrop />
 
-      {/* Lightweight Interior Daylight Illumination */}
-      <ambientLight intensity={1.2} color="#f8fafc" />
+      {/* Ambient Daylight & Interior Fill */}
+      <ambientLight intensity={1.3} color="#f0f9ff" />
 
-      {/* Natural Sun Light Streaming Through Window */}
+      {/* Main Architectural Daylight Key Light */}
       <directionalLight
         position={[6, 8, 4]}
-        intensity={2.2}
-        color="#fffbeb"
+        intensity={2.4}
+        color="#ffffff"
       />
 
-      {/* Soft Skylight Fill from City Horizon */}
-      <directionalLight position={[-5, 4, 2]} intensity={0.8} color="#bae6fd" />
+      {/* Electric Sky Blue Horizon Rim Light */}
+      <directionalLight position={[-6, 4, 2]} intensity={1.2} color="#38bdf8" />
 
-      {/* Executive Office Floor (Warm neutral loop-pile carpet matching photo) */}
+      {/* Sleek Dark Reflective Architectural Floor */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -1.86, 0]}
       >
-        <planeGeometry args={[32, 32]} />
+        <planeGeometry args={[36, 36]} />
         <meshStandardMaterial
-          color="#cfc5bb"
-          roughness={0.5}
-          metalness={0.05}
+          color="#0d1527"
+          roughness={0.25}
+          metalness={0.3}
         />
       </mesh>
 
-      {/* Diagonal Sunlight Patches on Floor */}
-      <SunlightFloorShadows />
+      {/* Subtle Studio Floor Grid */}
+      <gridHelper
+        args={[36, 36, "#1e293b", "#0f172a"]}
+        position={[0, -1.85, 0]}
+      />
 
-      {/* Lightweight 3D Glass Partition Wall with Black Aluminum Mullions */}
+      {/* 3D Glass Partition Wall with Black Aluminum Mullions */}
       <GlassPartitionWall />
-
-      {/* Modular Acoustic Tile Ceiling at y = 2.7 */}
-      <mesh
-        rotation={[Math.PI / 2, 0, 0]}
-        position={[0, 2.7, 0]}
-      >
-        <planeGeometry args={[32, 32]} />
-        <meshStandardMaterial
-          color="#f8fafc"
-          roughness={0.9}
-        />
-      </mesh>
 
       {/* Linear LED Pendant Fixture Hanging from Ceiling */}
       <group position={[1.4, 2.1, -1.2]} rotation={[0, -0.25, 0]}>
         <mesh>
           <boxGeometry args={[0.04, 0.04, 2.8]} />
-          <meshStandardMaterial color="#d4af37" metalness={0.8} roughness={0.25} />
+          <meshStandardMaterial color="#d4af37" metalness={0.85} roughness={0.2} />
         </mesh>
         <mesh position={[0, -0.02, 0]}>
           <boxGeometry args={[0.03, 0.01, 2.76]} />

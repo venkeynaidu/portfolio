@@ -49,9 +49,9 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Soft ivory scrim so the copy reads cleanly over the live 3D office */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#f4efe7]/95 via-[#f4efe7]/80 to-transparent lg:to-[#f4efe7]/0" />
-      <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-[#efe9df] to-transparent" />
+      {/* Sleek midnight scrim so the copy reads cleanly over the live 3D office */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#070b16]/95 via-[#070b16]/80 to-transparent lg:to-[#070b16]/30" />
+      <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-[#070b16] to-transparent" />
 
       <motion.div
         variants={containerVariants}

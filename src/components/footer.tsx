@@ -17,7 +17,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="py-12 border-t border-slate-200/80 bg-slate-50/80 backdrop-blur-md text-xs text-slate-600 relative z-10">
+    <footer className="py-12 border-t border-slate-800 bg-[#070b16] text-xs text-slate-300 relative z-10">
       <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-violet-500 text-white font-mono text-xs shadow-sm">
