@@ -7,7 +7,6 @@ import { ArrowRight, Download, Terminal, Layers, ShieldCheck, Mail } from "lucid
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { portfolioData } from "@/data/portfolio-data";
-import { HeroCanvas } from "@/components/3d/hero-canvas";
 
 export function HeroSection() {
   const containerVariants = {
@@ -31,10 +30,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
-      {/* 3D Scene in Background */}
-      <HeroCanvas />
-
+    <section id="hero" className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden">
       {/* Cybernetic Grid Overlay */}
       <div className="absolute inset-0 bg-cyber-grid opacity-30 pointer-events-none -z-10" />
 
