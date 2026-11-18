@@ -37,12 +37,22 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    // GSAP ScrollTrigger for 7 distinct cinematic scenes
+    // Scene mapping: 0: Hero, 1: About, 2: Skills/Workstation, 3: Timeline, 4: Projects/Achievements, 5: Contact
+    const sectionSceneMap: Record<string, number> = {
+      hero: 0,
+      about: 1,
+      skills: 2,
+      experience: 3,
+      projects: 4,
+      achievements: 4,
+      contact: 5,
+    };
+
     const sectionIds = [
       "hero",
       "about",
-      "experience",
       "skills",
+      "experience",
       "projects",
       "achievements",
       "contact",
@@ -50,15 +60,16 @@ export default function Home() {
 
     const triggers: ScrollTrigger[] = [];
 
-    sectionIds.forEach((id, index) => {
+    sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) {
+        const sceneNum = sectionSceneMap[id] ?? 0;
         const trigger = ScrollTrigger.create({
           trigger: el,
           start: "top 60%",
           end: "bottom 40%",
-          onEnter: () => setActiveScene(index),
-          onEnterBack: () => setActiveScene(index),
+          onEnter: () => setActiveScene(sceneNum),
+          onEnterBack: () => setActiveScene(sceneNum),
         });
         triggers.push(trigger);
       }
@@ -71,7 +82,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-foreground selection:bg-cyan-500 selection:text-black">
+    <div className="relative min-h-screen bg-transparent text-slate-900 selection:bg-sky-500 selection:text-white">
       {/* Custom Mouse Cursor */}
       <CustomCursor />
 
@@ -91,8 +102,8 @@ export default function Home() {
       <main className="relative z-10">
         <HeroSection />
         <AboutSection />
-        <ExperienceTimeline />
         <SkillsInteractive />
+        <ExperienceTimeline />
         <ProjectsSection />
         <EducationAchievements />
         <ContactSection />
