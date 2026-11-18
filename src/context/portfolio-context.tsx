@@ -7,7 +7,8 @@ export type ProjectWorldKey =
   | "beverage"
   | "defence"
   | "ecommerce"
-  | "hardware";
+  | "hardware"
+  | "community";
 
 export type CompanyOfficeKey =
   | "microgenesis"

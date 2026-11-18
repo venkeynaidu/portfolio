@@ -15,6 +15,7 @@ import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { SceneNav } from "@/components/ui/scene-nav";
+import { CinematicOverlay } from "@/components/ui/cinematic-overlay";
 import { PortfolioProvider, usePortfolio } from "@/context/portfolio-context";
 
 if (typeof window !== "undefined") {
@@ -89,7 +90,7 @@ function PortfolioHome() {
   }, [setActiveScene, setScrollProgress]);
 
   return (
-    <div className="relative min-h-screen bg-transparent text-slate-900 selection:bg-sky-500 selection:text-white">
+    <div className="relative min-h-screen bg-transparent text-stone-900 selection:bg-[#a87b42] selection:text-white">
       {/* Custom Mouse Cursor */}
       <CustomCursor />
 
@@ -100,6 +101,9 @@ function PortfolioHome() {
         activeProjectWorld={activeProjectWorld}
         activeCompanyOffice={activeCompanyOffice}
       />
+
+      {/* Film chrome: opening fade, letterbox, chapter titles */}
+      <CinematicOverlay />
 
       {/* Floating Glassmorphism Navigation */}
       <Navbar />

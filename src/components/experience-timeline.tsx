@@ -16,21 +16,16 @@ import {
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
 import { usePortfolio, CompanyOfficeKey } from "@/context/portfolio-context";
+import { getCompanyKey } from "@/lib/world-mapping";
 
 export function ExperienceTimeline() {
   const { activeCompanyOffice, setActiveCompanyOffice } = usePortfolio();
-
-  const getCompanyKey = (companyName: string): CompanyOfficeKey => {
-    if (companyName.includes("MicroGenesis")) return "microgenesis";
-    if (companyName.includes("Tulasi")) return "tulasi";
-    return "arowana";
-  };
 
   return (
     <section id="experience" className="py-24 px-6 max-w-5xl mx-auto border-t border-slate-200 relative">
       <div className="flex flex-col items-center text-center mb-12">
         <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/40 text-sky-700 bg-sky-50">
-          Scene 04 // Company-Specific 3D Offices
+          Chapter 04 · Career Journey
         </Badge>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Professional Work Experience
@@ -88,6 +83,10 @@ export function ExperienceTimeline() {
                 </span>
               </div>
 
+              <motion.div
+                viewport={{ amount: 0.4 }}
+                onViewportEnter={() => setActiveCompanyOffice(compKey)}
+              >
               <Card
                 onClick={() => setActiveCompanyOffice(compKey)}
                 className={`pearl-glass transition-all duration-300 overflow-hidden shadow-sm cursor-pointer ${
@@ -243,6 +242,7 @@ export function ExperienceTimeline() {
                   </div>
                 </CardContent>
               </Card>
+              </motion.div>
             </motion.div>
           );
         })}

@@ -7,9 +7,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-playfair);
+  --font-display: var(--font-playfair);
   --color-border: var(--border);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -19,67 +20,154 @@
   --color-muted-foreground: var(--muted-foreground);
 }
 
+/*
+ * Premium light-realism palette.
+ * The existing components use sky / indigo / violet / slate utility classes; those scales are
+ * re-tuned here so the whole UI moves to harbour blue, ink navy, brass and warm stone at once.
+ */
+@theme {
+  /* Harbour blue — primary accent */
+  --color-sky-50: #f1f6f9;
+  --color-sky-100: #dfeaf1;
+  --color-sky-200: #bfd4e2;
+  --color-sky-300: #93b5cc;
+  --color-sky-400: #5f8fb0;
+  --color-sky-500: #3a6f94;
+  --color-sky-600: #2b5a7b;
+  --color-sky-700: #234964;
+  --color-sky-800: #1d3b51;
+  --color-sky-900: #182f41;
+  --color-sky-950: #0f1e2a;
+
+  /* Ink navy */
+  --color-indigo-50: #f3f4f7;
+  --color-indigo-100: #e3e6ee;
+  --color-indigo-200: #c7cddc;
+  --color-indigo-300: #a0a9c1;
+  --color-indigo-400: #6f7c9b;
+  --color-indigo-500: #4f5b7a;
+  --color-indigo-600: #3b4562;
+  --color-indigo-700: #2f374f;
+  --color-indigo-800: #252b3f;
+  --color-indigo-900: #1c2131;
+  --color-indigo-950: #11141e;
+
+  /* Brass — warm highlight */
+  --color-violet-50: #faf6f0;
+  --color-violet-100: #f2e8d9;
+  --color-violet-200: #e5d0b1;
+  --color-violet-300: #d4b283;
+  --color-violet-400: #c19459;
+  --color-violet-500: #a87b42;
+  --color-violet-600: #8c6436;
+  --color-violet-700: #6f4f2c;
+  --color-violet-800: #563e24;
+  --color-violet-900: #42301d;
+  --color-violet-950: #261b10;
+  --color-purple-50: #faf6f0;
+  --color-purple-100: #f2e8d9;
+  --color-purple-200: #e5d0b1;
+  --color-purple-300: #d4b283;
+  --color-purple-400: #c19459;
+  --color-purple-500: #a87b42;
+  --color-purple-600: #8c6436;
+  --color-purple-700: #6f4f2c;
+  --color-purple-800: #563e24;
+  --color-purple-900: #42301d;
+  --color-purple-950: #261b10;
+
+  /* Warm stone neutrals */
+  --color-slate-50: #fafaf9;
+  --color-slate-100: #f5f4f1;
+  --color-slate-200: #e7e4df;
+  --color-slate-300: #d6d1ca;
+  --color-slate-400: #a8a19a;
+  --color-slate-500: #78716c;
+  --color-slate-600: #57534e;
+  --color-slate-700: #44403c;
+  --color-slate-800: #292524;
+  --color-slate-900: #1c1917;
+  --color-slate-950: #0c0a09;
+}
+
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: rgba(255, 255, 255, 0.85);
-  --card-foreground: #0f172a;
-  --primary: #0284c7;
+  --background: #efe9df;
+  --foreground: #1c1917;
+  --card: rgba(252, 250, 246, 0.78);
+  --card-foreground: #1c1917;
+  --primary: #2b5a7b;
   --primary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --border: rgba(226, 232, 240, 0.8);
-  --radius: 0.75rem;
+  --muted: #f5f4f1;
+  --muted-foreground: #78716c;
+  --border: rgba(214, 209, 202, 0.7);
+  --radius: 0.9rem;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: #efe9df;
+  color: #1c1917;
 }
 
-/* Bright Futuristic Architectural Grid */
+h1,
+h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Subtle architectural hairline grid (fallback when WebGL is unavailable) */
 .bg-futuristic-grid {
-  background-image: 
-    linear-gradient(to right, rgba(14, 165, 233, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(14, 165, 233, 0.06) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(120, 113, 108, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 113, 108, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-/* Luminous Pearl Glassmorphism */
+/* Frosted ivory glass — cards floating over the live 3D set */
 .pearl-glass {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  background: linear-gradient(160deg, rgba(253, 251, 247, 0.84), rgba(247, 243, 236, 0.74));
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 30px 60px -24px rgba(41, 30, 20, 0.22),
+    0 2px 6px -2px rgba(41, 30, 20, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .pearl-glass:hover {
-  border-color: rgba(14, 165, 233, 0.4);
-  box-shadow: 0 20px 40px -8px rgba(14, 165, 233, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+  border-color: rgba(168, 123, 66, 0.45);
+  box-shadow:
+    0 36px 70px -24px rgba(41, 30, 20, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
 }
 
-/* Holographic Shimmer Border */
+/* Brass hairline border */
 .holo-border {
   border: 1px solid transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                    linear-gradient(135deg, #38bdf8, #818cf8, #c084fc, #fb923c);
+  background-image: linear-gradient(rgba(252, 250, 246, 0.92), rgba(252, 250, 246, 0.92)),
+    linear-gradient(135deg, #d4b283, #a87b42, #3a6f94);
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
 
-/* Luminous Accent Glows */
+/* Soft accent glows */
 .glow-sky {
-  box-shadow: 0 0 35px -5px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 18px 40px -12px rgba(43, 90, 123, 0.3);
 }
 
 .glow-violet {
-  box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.25);
+  box-shadow: 0 18px 40px -12px rgba(168, 123, 66, 0.3);
 }
 
 .glow-peach {
-  box-shadow: 0 0 35px -5px rgba(249, 115, 22, 0.25);
+  box-shadow: 0 18px 40px -12px rgba(193, 148, 89, 0.3);
+}
+
+/* Readable type when set directly over the 3D scene */
+.text-over-scene {
+  text-shadow: 0 1px 24px rgba(244, 239, 231, 0.95), 0 0 2px rgba(244, 239, 231, 0.8);
 }
 
 @layer base {

@@ -49,7 +49,7 @@ export function Navbar() {
               Garaga Venkatesh
             </span>
             <span className="text-[10px] text-sky-600 font-mono leading-none">
-              Full Stack Digital Twin
+              Senior Full Stack Engineer
             </span>
           </div>
         </Link>

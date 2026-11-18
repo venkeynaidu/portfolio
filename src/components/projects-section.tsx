@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { portfolioData, ProjectItem } from "@/data/portfolio-data";
 import { usePortfolio, ProjectWorldKey } from "@/context/portfolio-context";
+import { getProjectWorld } from "@/lib/world-mapping";
 
 function ProjectCodeTerminal({ project }: { project: ProjectItem }) {
   const [activeTab, setActiveTab] = useState<"code" | "output">("code");
@@ -160,20 +161,13 @@ export function ProjectsSection() {
   const { activeProjectWorld, setActiveProjectWorld } = usePortfolio();
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
-  const getProjectWorld = (title: string, category: string): ProjectWorldKey => {
-    if (title.includes("Chicken") || title.includes("Poultry")) return "poultry";
-    if (title.includes("Food") || title.includes("SBL") || title.includes("Beverage")) return "beverage";
-    if (title.includes("VCS") || title.includes("PMS") || category.includes("Defense")) return "defence";
-    if (title.includes("Servo") || category.includes("Embedded")) return "hardware";
-    return "ecommerce";
-  };
-
   const worldTabs = [
     { key: "poultry" as ProjectWorldKey, icon: "🐔", label: "Poultry Farm ERP World" },
     { key: "beverage" as ProjectWorldKey, icon: "🥤", label: "Beverage Bottling World" },
     { key: "defence" as ProjectWorldKey, icon: "🛡️", label: "Defense Command Center" },
     { key: "ecommerce" as ProjectWorldKey, icon: "🛍️", label: "Digital Retail Showroom" },
     { key: "hardware" as ProjectWorldKey, icon: "⚙️", label: "Embedded Servo & Zigbee Lab" },
+    { key: "community" as ProjectWorldKey, icon: "💒", label: "Community Matrimony Hall" },
   ];
 
   const filterTabs = [
@@ -226,7 +220,7 @@ export function ProjectsSection() {
     <section id="projects" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200 relative">
       <div className="flex flex-col items-center text-center mb-10">
         <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/40 text-sky-700 bg-sky-50">
-          Scene 05 // Industry-Specific 3D Project Storytelling
+          Chapter 05 · Projects in Their Worlds
         </Badge>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Enterprise Systems &amp; Live Architecture
@@ -281,7 +275,7 @@ export function ProjectsSection() {
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => {
             const Icon = getProjectIcon(project.category, project.title);
-            const pWorld = getProjectWorld(project.title, project.category);
+            const pWorld = getProjectWorld(project);
             const isWorldActive = activeProjectWorld === pWorld;
 
             return (
@@ -292,6 +286,8 @@ export function ProjectsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
+                viewport={{ amount: 0.35 }}
+                onViewportEnter={() => setActiveProjectWorld(pWorld)}
                 className="h-full"
               >
                 <Card

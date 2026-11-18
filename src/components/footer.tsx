@@ -28,7 +28,7 @@ export function Footer() {
               {portfolioData.personal.name}
             </div>
             <div className="text-[11px] text-slate-500">
-              Full Stack Digital Twin &bull; Python &bull; React &bull; Kafka &bull; Kubernetes &bull; {portfolioData.personal.noticePeriod}
+              Senior Full Stack Engineer &bull; Python &bull; React &bull; Kafka &bull; Kubernetes &bull; {portfolioData.personal.noticePeriod}
             </div>
           </div>
         </div>

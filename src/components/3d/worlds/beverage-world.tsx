@@ -343,3 +343,4 @@ export function BeverageWorld({ visible }: BeverageWorldProps) {
     </group>
   );
 }
+

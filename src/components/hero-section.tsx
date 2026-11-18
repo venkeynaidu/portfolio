@@ -49,20 +49,18 @@ export function HeroSection() {
 
   return (
     <section id="hero" className="relative min-h-[95vh] flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      {/* Background Architectural Grid */}
-      <div className="absolute inset-0 bg-futuristic-grid opacity-60 pointer-events-none -z-10" />
-
-      {/* Luminous Ambient Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-gradient-to-tr from-sky-400/15 via-indigo-300/10 to-violet-400/15 blur-[120px] rounded-full pointer-events-none -z-10" />
+      {/* Soft ivory scrim so the copy reads cleanly over the live 3D office */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#f4efe7]/95 via-[#f4efe7]/80 to-transparent lg:to-[#f4efe7]/0" />
+      <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-[#efe9df] to-transparent" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center"
+        className="relative z-10 w-full max-w-6xl mx-auto px-6 text-left flex flex-col items-start [&>*]:max-w-2xl [&>*:last-child]:max-w-none"
       >
         {/* Availability & Notice Period Badges */}
-        <motion.div variants={itemVariants} className="mb-5 flex flex-wrap items-center justify-center gap-2.5">
+        <motion.div variants={itemVariants} className="mb-5 flex flex-wrap items-center gap-2.5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-sky-400/30 bg-sky-50/80 backdrop-blur-md text-xs font-semibold text-sky-800 shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
@@ -80,7 +78,7 @@ export function HeroSection() {
         {/* Hero Title */}
         <motion.div variants={itemVariants} className="space-y-3 mb-6">
           <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-indigo-600 font-bold">
-            Human-Robot Digital Twin &bull; 6 Years Experience
+            Senior Full Stack Engineer &bull; 6 Years Experience
           </p>
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
             Hi, I&apos;m{" "}
@@ -106,7 +104,7 @@ export function HeroSection() {
         </motion.p>
 
         {/* Top 5 Key Skills Chips */}
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-2 mb-9">
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2 mb-9">
           <span className="text-xs font-bold text-slate-700 uppercase font-mono tracking-wider mr-1">
             Top Skills:
           </span>
@@ -123,7 +121,7 @@ export function HeroSection() {
         {/* Action Button Row */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-3.5 mb-14"
+          className="flex flex-wrap items-center gap-3.5 mb-14"
         >
           <Link
             href="#projects"

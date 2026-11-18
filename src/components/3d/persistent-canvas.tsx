@@ -14,7 +14,7 @@ interface PersistentCanvasProps {
 
 function WebGLFallback() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-slate-50">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#efe9df]">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-sky-200/30 via-indigo-200/20 to-violet-200/30 blur-[120px] rounded-full" />
       <div className="absolute inset-0 bg-futuristic-grid opacity-60" />
     </div>
@@ -30,9 +30,17 @@ export function PersistentCanvas({
   const [mounted, setMounted] = useState(false);
   const [hasWebGL, setHasWebGL] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     setMounted(true);
+
+    // Use the visitor-facing realistic avatar when public/avatar.glb exists
+    fetch("/avatar.glb", { method: "HEAD" })
+      .then((r) => {
+        if (r.ok && !(r.headers.get("content-type") ?? "").includes("text/html")) setAvatarUrl("/avatar.glb");
+      })
+      .catch(() => {});
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (motionQuery.matches) {
@@ -61,11 +69,13 @@ export function PersistentCanvas({
       <Suspense fallback={<WebGLFallback />}>
         <Canvas
           shadows
-          camera={{ position: [0, 0, 4.6], fov: 45 }}
-          dpr={[1, 1.75]}
+          flat
+          camera={{ position: [0, -0.2, 4.4], fov: 38, near: 0.1, far: 200 }}
+          dpr={[1, 1.5]}
           gl={{
             antialias: true,
-            alpha: true,
+            alpha: false,
+            stencil: false,
             powerPreference: "high-performance",
           }}
           className="w-full h-full"
@@ -75,6 +85,7 @@ export function PersistentCanvas({
             scrollProgress={scrollProgress}
             activeProjectWorld={activeProjectWorld}
             activeCompanyOffice={activeCompanyOffice}
+            avatarUrl={avatarUrl}
           />
         </Canvas>
       </Suspense>

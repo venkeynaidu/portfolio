@@ -58,7 +58,7 @@ export function AboutSection() {
     <section id="about" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200 relative">
       <div className="flex flex-col items-center text-center mb-16">
         <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/40 text-sky-700 bg-sky-50">
-          Scene 02 // About Me
+          Chapter 02 · My Story
         </Badge>
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Professional Background &amp; Digital Identity
