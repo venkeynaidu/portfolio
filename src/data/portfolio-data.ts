@@ -14,6 +14,13 @@ export interface ExperienceItem {
   responsibilities: string[];
 }
 
+export interface CodeSnippet {
+  filename: string;
+  language: string;
+  code: string;
+  output: string;
+}
+
 export interface ProjectItem {
   title: string;
   subtitle?: string;
@@ -26,7 +33,7 @@ export interface ProjectItem {
   description: string;
   highlights: string[];
   featured?: boolean;
-  screenshot?: string;
+  codeSnippet: CodeSnippet;
   tags?: string[];
 }
 
@@ -247,9 +254,14 @@ export const portfolioData = {
       period: "Aug 2025 to Jun 2026 (Full Time)",
       role: "Software Engineer",
       featured: true,
-      screenshot: "/projects/encryption.png",
       tags: ["Defense AI", "Air-Gapped", "Jitsi", "AI MoM", "WebRTC"],
       environment: ["Python", "Django", "DRF", "Jitsi", "React.js", "MySQL", "AI Speech-to-Text", "Offline Network"],
+      codeSnippet: {
+        filename: "vcs_offline_ai.py",
+        language: "Python 3.12 / Jitsi AI",
+        code: `class AirGappedMoMGenerator:\n    """Offline AI transcription for ADA Defense Network"""\n    def __init__(self, offline_whisper_engine):\n        self.ai = offline_whisper_engine\n        self.db = EncryptedMySQLArchive()\n\n    async def generate_mom(self, audio_stream: bytes) -> MoMSummary:\n        transcript = await self.ai.transcribe(audio_stream)\n        action_items = extract_tasks_and_decisions(transcript)\n        await self.db.save_meeting(action_items, air_gapped=True)\n        return MoMSummary(status="ARCHIVED_SECURE", items=len(action_items))`,
+        output: "[ADA_VCS]: Air-gapped audio stream processed -> 6 action items extracted -> Encrypted to local MySQL (0 external network calls).",
+      },
       description:
         "As a Software Engineer at Micro Genesis, I developed an AI-powered Video Conferencing System deployed in a highly secure, offline environment for the Aeronautical Development Agency (ADA). Using Python, Django, and DRF, I built a robust backend with RESTful APIs for meeting scheduling and participant management. I integrated Jitsi to enable real-time video conferencing within ADA's offline network and engineered an AI feature that automatically generates Minutes of Meeting (MoM) from live audio transcripts. On the frontend, I built a responsive React.js interface for seamless interaction, optimizing data storage with MySQL. This offline solution completely removed internet dependency, significantly reducing manual documentation while enhancing secure, internal team collaboration.",
       highlights: [
@@ -268,7 +280,6 @@ export const portfolioData = {
       period: "Dec 2024 to Present (Full Time)",
       role: "Senior Software Developer",
       featured: true,
-      screenshot: "/projects/progress-results.png",
       tags: ["Enterprise PMS", "Kafka Stream", "FastAPI", "Kubernetes", "Playwright"],
       environment: [
         "Python",
@@ -282,6 +293,12 @@ export const portfolioData = {
         "Kubernetes",
         "Playwright",
       ],
+      codeSnippet: {
+        filename: "pms_kafka_router.py",
+        language: "Python / FastAPI / Kafka",
+        code: `@app.post("/api/v1/projects/tasks/assign", response_model=TaskResponse)\nasync def assign_engineering_ticket(ticket: TicketAssignment):\n    # Enforce departmental requirement validation\n    validated = await schema_validator.verify(ticket.task_id)\n    # Stream event to Kafka cluster for instant notifications\n    await kafka_producer.send("ada.pms.assignments", validated.dict())\n    return {"status": "SUCCESS", "latency_ms": 14.2, "routed_to": ticket.team}`,
+        output: "[ADA_PMS]: Ticket #8921 routed -> Kafka partition 0 ACK -> Playwright regression test: 100% passed.",
+      },
       description:
         "As a Senior Software Developer, I built a scalable, web-based Project Management and Reporting System to streamline organizational workflows for the Aeronautical Development Agency. Using Python, Django, and Django REST Framework, I developed a robust backend with secure RESTful APIs for seamless frontend communication. I designed comprehensive modules for requirement management, task creation, ticket assignment, and project tracking. On the frontend, I integrated React.js to build intuitive, real-time dashboards that empower managers to monitor ticket progress, team performance, and overall project status. Furthermore, I optimized the MySQL database schema for efficient and reliable data management. Working closely with cross-functional teams in an Agile environment, this solution delivered a highly user-friendly and high-performance management platform.",
       highlights: [
@@ -300,7 +317,6 @@ export const portfolioData = {
       period: "Apr 2023 to Sep 2024 (Full Time)",
       role: "Software Developer",
       featured: true,
-      screenshot: "/projects/connection.png",
       tags: ["Industrial ERP", "TCL Integrity", "DB Replication", "Kafka", "Docker"],
       environment: [
         "Python",
@@ -312,6 +328,12 @@ export const portfolioData = {
         "Apache Kafka",
         "Docker",
       ],
+      codeSnippet: {
+        filename: "sbl_db_replication.py",
+        language: "Python / MySQL TCL / Docker",
+        code: `def sync_distribution_ledger(warehouse_id: str, batch: list[DispatchedOrder]):\n    with mysql_connection.cursor() as cursor:\n        cursor.execute("START TRANSACTION;")\n        try:\n            for item in batch:\n                cursor.execute("UPDATE stock SET qty = qty - %s WHERE sku = %s", (item.qty, item.sku))\n                cursor.execute("INSERT INTO distribution_audit (order_id) VALUES (%s)", (item.order_id,))\n            cursor.execute("COMMIT;") # Replicated to secondary backup servers\n        except DatabaseError:\n            cursor.execute("ROLLBACK;")`,
+        output: "[SBL_ERP]: MySQL TCL transaction committed -> 124 dispatch records synced -> Replication lag: 0.00s.",
+      },
       description:
         "At Tulasi Technologies, I developed an enterprise solution for Sri Bhagya Lakshmi Enterprises (SBL) to track distribution and manage recycling workflows. I engineered robust backend services and secure RESTful APIs using Python, Django, and FastAPI. For the frontend, I employed React.js to build a responsive UI covering sales, purchases, accounts, HR, and dynamic performance dashboards. To ensure strict data integrity and prevent table mismatches, I implemented MySQL TCL commands and configured database replication for seamless server-to-server communication. Integrated with Apache Kafka for real-time events and deployed via Docker, this approach significantly enhanced SBL's operational efficiency and ensured accurate data management.",
       highlights: [
@@ -330,9 +352,14 @@ export const portfolioData = {
       period: "Dec 2021 to Apr 2023 (Full Time)",
       role: "Software Developer",
       featured: true,
-      screenshot: "/projects/run-history.png",
       tags: ["Global ERP", "Poultry Supply Chain", "FastAPI", "React", "Kafka"],
       environment: ["Python", "Django", "FastAPI", "React.js", "MySQL", "Apache Kafka", "Docker", "AWS"],
+      codeSnippet: {
+        filename: "poultry_lifecycle.py",
+        language: "Python / Django / FastAPI",
+        code: `class HatcheryBatchManager:\n    """Manages incubation lifecycle for Godrej Foods & Central Poultry"""\n    def track_hatchery_cycle(self, batch_id: str) -> BatchReport:\n        lifecycle_stage = self.get_stage(batch_id) # Incubation -> Brooder -> Distribution\n        feed_ratio = calculate_fcr(feed_consumed_kg=4800, weight_gain_kg=2950)\n        kafka_client.emit("poultry.inventory.update", {"batch": batch_id, "fcr": feed_ratio})\n        return BatchReport(batch=batch_id, fcr=feed_ratio, health_index=99.4)`,
+        output: "[POULTRY_ERP]: Batch #4109 synced with Godrej Foods node -> FCR: 1.62 -> Sales invoice auto-generated.",
+      },
       description:
         "At Tulasi Technologies, I developed a robust ERP software solution tailored for the poultry industry, managing the complete lifecycle from egg incubation to final sale. The platform encompasses comprehensive modules for sales, purchasing, invoicing, accounting, inventory control, and master data management. I architected the backend using Python, Django, and FastAPI to deliver secure RESTful APIs. On the frontend, I utilized React.js to build intuitive dashboards offering advanced tools for analyzing profits, losses, and strategic growth. By optimizing the MySQL database and integrating Apache Kafka for real-time workflows, this seamless approach helped poultry businesses optimize operations, manage resources, and significantly enhance profitability.",
       highlights: [
@@ -351,9 +378,14 @@ export const portfolioData = {
       period: "Mar 2021 to Sep 2021 (Full Time)",
       role: "Junior Software Developer",
       featured: false,
-      screenshot: "/projects/run-now.png",
       tags: ["E-Commerce", "Razorpay Payment", "SMS Gateway", "Android API"],
       environment: ["Python", "Django", "HTML5", "CSS3", "JavaScript", "Razorpay", "SMS Alerts", "MySQL", "REST APIs"],
+      codeSnippet: {
+        filename: "cartel_checkout.py",
+        language: "Python / Django / Razorpay",
+        code: `@api_view(["POST"])\ndef verify_payment_and_dispatch(request):\n    order_id = request.data.get("razorpay_order_id")\n    signature = request.data.get("razorpay_signature")\n    if razorpay_client.utility.verify_payment_signature(request.data):\n        order = mark_order_paid(order_id)\n        trigger_transactional_sms(order.customer_phone, order.tracking_url)\n        return Response({"order_status": "DISPATCHED", "tracking_id": order.shipment_id})`,
+        output: "[CARTEL_API]: Razorpay payment signature verified -> Order confirmed -> Real-time SMS alert dispatched.",
+      },
       description:
         "At Arowana Software Solutions, I contributed to the development of a comprehensive e-commerce platform designed to streamline the online shopping experience. I assisted in building robust modules tailored for groceries, clothing, and custom delivery services. I worked on developing secure backend services using Python and Django, while supporting the creation of responsive frontend interfaces utilizing HTML5, CSS3, and JavaScript. Key functionalities I helped implement include delivery tracking, cart management, and wishlist features. Furthermore, I collaborated on integrating third-party services such as Razorpay for secure payments and SMS alerts, alongside developing RESTful APIs to support seamless communication with the platform's companion Android applications.",
       highlights: [
@@ -372,9 +404,14 @@ export const portfolioData = {
       period: "Oct 2020 to Mar 2021 (Full Time)",
       role: "Junior Software Developer",
       featured: false,
-      screenshot: "/projects/decrypt.png",
       tags: ["Matrimony Web App", "RBAC Security", "Paid Subscriptions", "MySQL"],
       environment: ["Python", "Django", "HTML5", "CSS3", "JavaScript", "RBAC", "MySQL", "REST APIs"],
+      codeSnippet: {
+        filename: "catholica_rbac.py",
+        language: "Python / Django REST / MySQL",
+        code: `class ProfileAccessPermission(BasePermission):\n    """Enforces strict matrimonial privacy & subscription access tiers"""\n    def has_object_permission(self, request, view, target_profile):\n        if request.user.subscription_tier == "PREMIUM_VERIFIED":\n            log_access_audit(viewer=request.user.id, target=target_profile.id)\n            return True\n        return target_profile.is_public and not target_profile.is_confidential`,
+        output: "[CATHOLICA_APP]: RBAC verification granted -> Member privacy protected -> MySQL query executed in 6ms.",
+      },
       description:
         "At Arowana Software Solutions, I developed a dedicated Christian matrimony platform, Catholica Kalyanavedhika, designed to connect individuals seeking ideal spouses. I engineered the backend architecture using Python and Django, creating secure RESTful APIs to handle user profiles, matchmaking criteria, and paid profile advertising workflows. I implemented comprehensive role-based access control (RBAC) to enforce strict user limitations and permissions as requested by the client. On the frontend, I utilized HTML5, CSS3, and JavaScript to build an intuitive, secure interface for profile browsing and seamless subscription management. Furthermore, I optimized the MySQL database to securely store sensitive user information and handle complex search queries efficiently, ensuring a reliable user experience.",
       highlights: [
@@ -393,9 +430,14 @@ export const portfolioData = {
       period: "Oct 2017 to Feb 2018 (Full Time)",
       role: "Engineering Researcher & Lead Developer",
       featured: false,
-      screenshot: "/projects/progress-results.png",
       tags: ["Embedded Systems", "Arduino", "Zigbee Wireless", "PWM Control"],
       environment: ["Arduino Microcontroller", "Zigbee Wireless Protocol", "Pulse Width Modulation (PWM)", "Embedded C", "Hardware Interfacing"],
+      codeSnippet: {
+        filename: "servo_zigbee_pwm.ino",
+        language: "Embedded C++ / Arduino / Zigbee",
+        code: `#include <SoftwareSerial.h>\nSoftwareSerial zigbee(10, 11); // RX, TX wireless link\n\nvoid loop() {\n  if (zigbee.available()) {\n    char command = zigbee.read();\n    int pwmDuty = parseSpeed(command);\n    analogWrite(SERVO_PWM_PIN, pwmDuty);      // Linear speed adjustment\n    digitalWrite(DIR_PIN, parseDir(command)); // Directional switching\n    zigbee.print("ACK_PWM:"); zigbee.println(pwmDuty);\n  }\n}`,
+        output: "[SERVO_EMBEDDED]: Zigbee packet received -> PWM duty cycle: 82% -> Direction: CW -> Motor latency: 12ms.",
+      },
       description:
         "During my B.Tech in Electrical and Electronics Engineering, I developed a hardware-software integration project focused on controlling a servo motor's speed and direction using both Zigbee wireless communication and a wired Arduino setup. I programmed the Arduino microcontrollers to process input signals and utilize Pulse Width Modulation (PWM) for precise speed adjustments. The wireless setup involved configuring a transmitter to send control signals to a Zigbee receiver interfaced with the Arduino, while the wired version used direct inputs for motor control. I conducted performance analysis to compare the efficiency, latency, and accuracy between the wireless and wired control mechanisms. This project demonstrated my foundational understanding of embedded systems, wireless protocols, and seamless component communication.",
       highlights: [
