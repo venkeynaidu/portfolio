@@ -28,14 +28,14 @@ export function MicrogenesisOffice({ visible }: MicrogenesisOfficeProps) {
       <pointLight position={[0, 4, -2]} intensity={visible ? 2.0 : 0} color="#0284c7" />
 
       {/* Security Barrier & Glass Partitions */}
-      <mesh position={[-3.2, 1.4, -2]} receiveShadow>
+      <mesh position={[-3.2, 1.4, -2]}>
         <boxGeometry args={[0.08, 2.8, 3.2]} />
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color="#38bdf8"
-          transmission={0.8}
           roughness={0.1}
+          metalness={0.2}
           transparent
-          opacity={0.3}
+          opacity={0.25}
         />
       </mesh>
 

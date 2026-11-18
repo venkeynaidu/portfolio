@@ -22,22 +22,20 @@ function BeverageBottle({
   return (
     <group position={position}>
       {/* Outer Glass Bottle */}
-      <mesh position={[0, 0.28, 0]} castShadow>
-        <cylinderGeometry args={[0.07, 0.08, 0.45, 16]} />
-        <meshPhysicalMaterial
-          color="#ffffff"
+      <mesh position={[0, 0.28, 0]}>
+        <cylinderGeometry args={[0.07, 0.08, 0.45, 14]} />
+        <meshStandardMaterial
+          color="#bae6fd"
           transparent
           opacity={0.35}
-          roughness={0.05}
-          transmission={0.88}
-          thickness={0.08}
-          ior={1.5}
+          roughness={0.15}
+          metalness={0.1}
         />
       </mesh>
 
       {/* Internal Liquid Mesh */}
       <mesh position={[0, 0.12 + (fillLevel * 0.35) / 2, 0]}>
-        <cylinderGeometry args={[0.065, 0.075, fillLevel * 0.35, 14]} />
+        <cylinderGeometry args={[0.065, 0.075, fillLevel * 0.35, 12]} />
         <meshStandardMaterial
           color={liquidColor}
           roughness={0.1}
@@ -49,13 +47,13 @@ function BeverageBottle({
 
       {/* Bottle Neck */}
       <mesh position={[0, 0.54, 0]}>
-        <cylinderGeometry args={[0.035, 0.07, 0.14, 16]} />
-        <meshPhysicalMaterial
-          color="#ffffff"
+        <cylinderGeometry args={[0.035, 0.07, 0.14, 14]} />
+        <meshStandardMaterial
+          color="#bae6fd"
           transparent
           opacity={0.35}
-          roughness={0.05}
-          transmission={0.88}
+          roughness={0.15}
+          metalness={0.1}
         />
       </mesh>
 

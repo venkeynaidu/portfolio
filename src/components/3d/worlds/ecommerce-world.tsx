@@ -153,7 +153,7 @@ function ShowcasePedestal({
             {/* Sapphire Face */}
             <mesh>
               <cylinderGeometry args={[0.11, 0.11, 0.02, 24]} />
-              <meshPhysicalMaterial color="#0f172a" roughness={0.1} transmission={0.6} />
+              <meshStandardMaterial color="#0284c7" roughness={0.2} metalness={0.7} />
             </mesh>
             {/* Leather Strap */}
             <mesh position={[0, 0, 0]}>

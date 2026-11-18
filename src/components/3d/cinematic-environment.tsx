@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -9,53 +8,50 @@ interface CinematicEnvironmentProps {
   sceneIndex: number;
 }
 
-// Executive Office Glass Partition Wall with Black Aluminum Mullions
+// Lightweight Glass Partition Wall with Black Aluminum Mullions
 function GlassPartitionWall() {
   return (
     <group position={[1.8, 0.4, -1.8]} rotation={[0, -0.25, 0]}>
-      {/* Clear Architectural Glass Panels */}
+      {/* Clear Architectural Glass Panels - Pure lightweight standard material */}
       <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[0.04, 4.4, 4.8]} />
-        <meshPhysicalMaterial
-          color="#e0f2fe"
+        <boxGeometry args={[0.03, 4.4, 4.8]} />
+        <meshStandardMaterial
+          color="#bae6fd"
           transparent
-          opacity={0.25}
-          transmission={0.92}
-          roughness={0.05}
-          ior={1.5}
-          thickness={0.08}
+          opacity={0.18}
+          roughness={0.1}
+          metalness={0.3}
         />
       </mesh>
 
       {/* Black Aluminum Structural Mullions / Frame */}
-      {/* Top and Bottom Base Rails */}
       <mesh position={[0, 2.2, 0]}>
-        <boxGeometry args={[0.07, 0.08, 4.84]} />
-        <meshStandardMaterial color="#18181b" metalness={0.9} roughness={0.2} />
+        <boxGeometry args={[0.06, 0.08, 4.84]} />
+        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
       </mesh>
       <mesh position={[0, -2.2, 0]}>
-        <boxGeometry args={[0.07, 0.08, 4.84]} />
-        <meshStandardMaterial color="#18181b" metalness={0.9} roughness={0.2} />
+        <boxGeometry args={[0.06, 0.08, 4.84]} />
+        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
       </mesh>
 
       {/* Vertical Mullion Posts */}
       {[-2.3, -1.15, 0, 1.15, 2.3].map((zPos, idx) => (
         <mesh key={idx} position={[0, 0, zPos]}>
-          <boxGeometry args={[0.06, 4.4, 0.06]} />
-          <meshStandardMaterial color="#18181b" metalness={0.9} roughness={0.2} />
+          <boxGeometry args={[0.05, 4.4, 0.05]} />
+          <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
         </mesh>
       ))}
 
-      {/* Horizontal Divider Rail (At standard door transom height) */}
+      {/* Horizontal Divider Rail */}
       <mesh position={[0, 0.9, 0]}>
-        <boxGeometry args={[0.06, 0.05, 4.8]} />
-        <meshStandardMaterial color="#18181b" metalness={0.9} roughness={0.2} />
+        <boxGeometry args={[0.05, 0.04, 4.8]} />
+        <meshStandardMaterial color="#18181b" metalness={0.8} roughness={0.3} />
       </mesh>
     </group>
   );
 }
 
-// Diagonal Window Sunlight Shadow Strips across the Floor (as in reference photo)
+// Diagonal Window Sunlight Shadow Strips across the Floor (from reference photo)
 function SunlightFloorShadows() {
   return (
     <group position={[0.6, -1.84, 0.2]} rotation={[-Math.PI / 2, 0, -0.42]}>
@@ -65,7 +61,7 @@ function SunlightFloorShadows() {
           <meshBasicMaterial
             color="#fff8ed"
             transparent
-            opacity={0.16}
+            opacity={0.14}
             blending={THREE.AdditiveBlending}
             side={THREE.DoubleSide}
           />
@@ -88,76 +84,17 @@ function OfficePanoramaBackdrop() {
   }, [texture]);
 
   return (
-    <group position={[0, 0.6, -4.6]}>
+    <group position={[0, 0.5, -4.6]}>
       {/* High-Resolution Executive Conference & City Skyline Backdrop */}
       <mesh>
         <planeGeometry args={[14.2, 10.6]} />
         <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
-
-      {/* Subtle Depth Gradient Overlay at Edges */}
-      <mesh position={[0, 0, 0.01]}>
-        <planeGeometry args={[14.2, 10.6]} />
-        <meshBasicMaterial
-          color="#0f172a"
-          transparent
-          opacity={0.06}
-        />
-      </mesh>
     </group>
   );
 }
 
-// Floating Subtle Ambient Light Specks in Sunlight
-function OfficeSunlightDust({ count = 60 }: { count?: number }) {
-  const pointsRef = useRef<THREE.Points>(null!);
-
-  const positions = useMemo(() => {
-    const coords = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      coords[i * 3] = (Math.random() - 0.5) * 10 + 1;
-      coords[i * 3 + 1] = (Math.random() - 0.5) * 6 + 0.5;
-      coords[i * 3 + 2] = (Math.random() - 0.5) * 6;
-    }
-    return coords;
-  }, [count]);
-
-  useFrame((_, delta) => {
-    if (!pointsRef.current) return;
-    pointsRef.current.rotation.y += delta * 0.015;
-  });
-
-  return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.035}
-        color="#fef08a"
-        transparent
-        opacity={0.55}
-        sizeAttenuation
-      />
-    </points>
-  );
-}
-
 export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) {
-  const sunLightRef = useRef<THREE.DirectionalLight>(null!);
-
-  useFrame((_, delta) => {
-    if (sunLightRef.current) {
-      // Dynamic sunlight intensity across scenes
-      const targetIntensity = sceneIndex === 2 ? 3.2 : sceneIndex === 5 ? 2.9 : 2.6;
-      sunLightRef.current.intensity = THREE.MathUtils.lerp(
-        sunLightRef.current.intensity,
-        targetIntensity,
-        delta * 3
-      );
-    }
-  });
-
   return (
     <>
       {/* Natural Daylight Sky Tone */}
@@ -166,36 +103,28 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
       {/* Photorealistic Executive Conference Room & Skyline Backdrop */}
       <OfficePanoramaBackdrop />
 
-      {/* Daylight Interior Ambient Illumination */}
-      <ambientLight intensity={1.15} color="#f8fafc" />
+      {/* Lightweight Interior Daylight Illumination */}
+      <ambientLight intensity={1.2} color="#f8fafc" />
 
-      {/* Natural Sun Light Streaming Through Window (from the right, as in reference) */}
+      {/* Natural Sun Light Streaming Through Window */}
       <directionalLight
-        ref={sunLightRef}
-        position={[7, 9, 4]}
-        intensity={2.6}
+        position={[6, 8, 4]}
+        intensity={2.2}
         color="#fffbeb"
-        castShadow
-        shadow-mapSize={[1024, 1024]}
-        shadow-bias={-0.0001}
       />
 
       {/* Soft Skylight Fill from City Horizon */}
-      <directionalLight position={[-6, 5, 2]} intensity={0.9} color="#bae6fd" />
-
-      {/* Warm Floor Bounce Light */}
-      <pointLight position={[1, -1.2, 0]} intensity={0.7} color="#fed7aa" />
+      <directionalLight position={[-5, 4, 2]} intensity={0.8} color="#bae6fd" />
 
       {/* Executive Office Floor (Warm neutral loop-pile carpet matching photo) */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -1.86, 0]}
-        receiveShadow
       >
-        <planeGeometry args={[44, 44]} />
+        <planeGeometry args={[32, 32]} />
         <meshStandardMaterial
           color="#cfc5bb"
-          roughness={0.42}
+          roughness={0.5}
           metalness={0.05}
         />
       </mesh>
@@ -203,7 +132,7 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
       {/* Diagonal Sunlight Patches on Floor */}
       <SunlightFloorShadows />
 
-      {/* 3D Glass Partition Wall with Black Aluminum Mullions */}
+      {/* Lightweight 3D Glass Partition Wall with Black Aluminum Mullions */}
       <GlassPartitionWall />
 
       {/* Modular Acoustic Tile Ceiling at y = 2.7 */}
@@ -211,7 +140,7 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
         rotation={[Math.PI / 2, 0, 0]}
         position={[0, 2.7, 0]}
       >
-        <planeGeometry args={[44, 44]} />
+        <planeGeometry args={[32, 32]} />
         <meshStandardMaterial
           color="#f8fafc"
           roughness={0.9}
@@ -222,25 +151,13 @@ export function CinematicEnvironment({ sceneIndex }: CinematicEnvironmentProps) 
       <group position={[1.4, 2.1, -1.2]} rotation={[0, -0.25, 0]}>
         <mesh>
           <boxGeometry args={[0.04, 0.04, 2.8]} />
-          <meshStandardMaterial color="#d4af37" metalness={0.85} roughness={0.2} />
+          <meshStandardMaterial color="#d4af37" metalness={0.8} roughness={0.25} />
         </mesh>
         <mesh position={[0, -0.02, 0]}>
           <boxGeometry args={[0.03, 0.01, 2.76]} />
           <meshBasicMaterial color="#ffffff" />
         </mesh>
-        {/* Support Rods */}
-        <mesh position={[0, 0.3, -1.1]}>
-          <cylinderGeometry args={[0.005, 0.005, 0.6, 8]} />
-          <meshStandardMaterial color="#18181b" />
-        </mesh>
-        <mesh position={[0, 0.3, 1.1]}>
-          <cylinderGeometry args={[0.005, 0.005, 0.6, 8]} />
-          <meshStandardMaterial color="#18181b" />
-        </mesh>
       </group>
-
-      {/* Subtle Dust Motes in Sunlight */}
-      <OfficeSunlightDust count={50} />
     </>
   );
 }
