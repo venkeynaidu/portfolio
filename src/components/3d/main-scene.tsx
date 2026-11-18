@@ -40,7 +40,9 @@ export function MainScene({
 
   return (
     <>
-      <CinematicEnvironment sceneIndex={sceneIndex} />
+      <Suspense fallback={null}>
+        <CinematicEnvironment sceneIndex={sceneIndex} />
+      </Suspense>
       <CameraController sceneIndex={sceneIndex} scrollProgress={scrollProgress} storyKey={storyKey} />
 
       <Suspense fallback={null}>
