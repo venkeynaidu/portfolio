@@ -2,46 +2,55 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
-  MapPin,
   Mail,
   Phone,
+  MapPin,
   GraduationCap,
-  Sparkles,
-  Cpu,
   Layers,
+  Cpu,
   Zap,
   CheckCircle2,
+  Clock,
+  ExternalLink,
 } from "lucide-react";
 import { portfolioData } from "@/data/portfolio-data";
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.45 1.45 0 0 0-1.45 1.45c0 .8.65 1.45 1.45 1.45a1.45 1.45 0 0 0 1.45-1.45c0-.8-.65-1.45-1.45-1.45Z" />
+    </svg>
+  );
+}
 
 export function AboutSection() {
   const coreStrengths = [
     {
-      title: "Event-Driven Microservices",
-      desc: "Architecting real-time event streaming pipelines with Apache Kafka for asynchronous notifications and decoupled workflows.",
+      title: "Air-Gapped AI & Defense",
+      desc: "Architecting offline AI video conferencing systems with automated MoM audio transcripts for defense clients (ADA) with zero internet dependency.",
       icon: Zap,
-      color: "text-amber-500 bg-amber-50 border-amber-200",
+      color: "text-amber-600 bg-amber-50 border-amber-200",
     },
     {
-      title: "High-Throughput APIs",
-      desc: "Engineering secure, modular RESTful APIs using Python, Django REST Framework, and FastAPI for seamless cross-platform communication.",
+      title: "High-Throughput APIs & Microservices",
+      desc: "Engineering secure, modular RESTful APIs using Python, Django REST Framework, and FastAPI with Apache Kafka real-time event streaming.",
       icon: Cpu,
-      color: "text-sky-500 bg-sky-50 border-sky-200",
+      color: "text-sky-600 bg-sky-50 border-sky-200",
     },
     {
       title: "Automated QA & Reliability",
-      desc: "Delivering resilient systems with 100% automated regression and end-to-end testing powered by Playwright and Postman.",
+      desc: "Delivering resilient enterprise systems with 100% automated regression and functional test pipelines powered by Playwright and Postman.",
       icon: CheckCircle2,
-      color: "text-emerald-500 bg-emerald-50 border-emerald-200",
+      color: "text-emerald-600 bg-emerald-50 border-emerald-200",
     },
     {
       title: "Cloud & Container Orchestration",
-      desc: "Packaging services with Docker and deploying on Kubernetes & AWS (IAM) to guarantee continuous availability and high uptime.",
+      desc: "Packaging multi-service backends into Docker containers and orchestrating microservices on Kubernetes and AWS (IAM) for continuous high availability.",
       icon: Layers,
-      color: "text-indigo-500 bg-indigo-50 border-indigo-200",
+      color: "text-indigo-600 bg-indigo-50 border-indigo-200",
     },
   ];
 
@@ -55,7 +64,7 @@ export function AboutSection() {
           Professional Background &amp; Digital Identity
         </h2>
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-          A dedicated software engineer with 6 years of expertise building mission-critical enterprise systems, supply-chain ERPs, and distributed cloud applications.
+          Innovative Full Stack Developer with 6 years of experience architecting enterprise-grade web applications, air-gapped AI solutions, and industrial ERPs.
         </p>
       </div>
 
@@ -82,7 +91,7 @@ export function AboutSection() {
                   className="object-cover object-center filter saturate-[1.05]"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
 
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="text-lg font-bold tracking-tight">
@@ -91,9 +100,14 @@ export function AboutSection() {
                   <div className="text-xs text-sky-300 font-mono">
                     Full Stack Developer &bull; 6 Years Exp
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] text-slate-200 mt-1">
-                    <MapPin className="h-3 w-3 text-emerald-400" />
-                    <span>{portfolioData.personal.location}</span>
+                  <div className="flex items-center justify-between text-[11px] text-slate-200 mt-1">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3 text-emerald-400" />
+                      {portfolioData.personal.location}
+                    </span>
+                    <span className="font-mono text-amber-300 bg-black/40 px-2 py-0.5 rounded border border-amber-300/30">
+                      1 Month Notice
+                    </span>
                   </div>
                 </div>
               </div>
@@ -110,25 +124,55 @@ export function AboutSection() {
           className="lg:col-span-7 space-y-6"
         >
           <div className="space-y-4 text-sm sm:text-base text-slate-700 leading-relaxed">
-            <p>
-              I am a <strong className="text-slate-900 font-bold">Full Stack Developer with 6 years of experience</strong> architecting
-              high-performance web applications across the full lifecycle—from requirement gathering and data modeling to
-              cloud deployment and end-to-end automated verification.
+            <p className="font-medium text-slate-900">
+              {portfolioData.personal.summary}
             </p>
             <p>
-              Currently, I engineer the <strong className="text-slate-900 font-bold">Project Management System (PMS)</strong> for the{" "}
-              <strong className="text-sky-600 font-bold">Aeronautical Development Agency (ADA)</strong> at Micro Genesis Tech Soft,
-              delivering real-time ticket tracking, requirement management, and analytical dashboards integrated with
-              Apache Kafka event streaming.
+              Currently at <strong className="text-slate-900 font-bold">MicroGenesis Techsoft</strong>, I architect and build the{" "}
+              <strong className="text-sky-700 font-bold">Project Management System (PMS)</strong> and an{" "}
+              <strong className="text-indigo-700 font-bold">Air-Gapped AI Video Conferencing System (VCS)</strong> for the{" "}
+              <strong className="text-slate-900 font-bold">Aeronautical Development Agency (ADA)</strong>, integrating Jitsi WebRTC, live AI Minutes of Meeting synthesis, and real-time Kafka event streaming.
             </p>
             <p>
-              Previously at Tulasi Technologies, I spearheaded large-scale ERP platforms including Sri Bhagya Lakshmi Enterprises
-              and full-scale Poultry Industry ERP solutions, automating manufacturing, logistics, and multi-tier financial workflows.
+              Previously at <strong className="text-slate-900 font-bold">Tulasi Technologies</strong>, I engineered large-scale ERP platforms for{" "}
+              <strong className="text-slate-900 font-bold">Godrej Foods, Central Poultry Malawi, and Sri Bhagya Lakshmi Enterprises (SBL)</strong>, managing complete agricultural supply chains, fleet logistics, and database replication.
             </p>
           </div>
 
           {/* Quick Info Grid in Pearl Glass */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <a
+              href={portfolioData.personal.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3.5 rounded-xl pearl-glass flex items-center justify-between hover:border-[#0077b5]/50 transition-colors group"
+            >
+              <div className="flex items-center gap-2.5 truncate">
+                <div className="h-8 w-8 rounded-lg bg-[#0077b5] text-white flex items-center justify-center shrink-0">
+                  <LinkedinIcon className="h-4 w-4" />
+                </div>
+                <div className="text-xs truncate">
+                  <span className="text-slate-500 block text-[10px]">LinkedIn Profile</span>
+                  <span className="text-slate-900 font-semibold group-hover:text-[#0077b5] transition-colors font-mono">
+                    venkatesh-garaga
+                  </span>
+                </div>
+              </div>
+              <ExternalLink className="h-3.5 w-3.5 text-slate-400 group-hover:text-[#0077b5]" />
+            </a>
+
+            <div className="p-3.5 rounded-xl pearl-glass flex items-center gap-3">
+              <div className="h-8 w-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                <Clock className="h-4 w-4" />
+              </div>
+              <div className="text-xs">
+                <span className="text-slate-500 block text-[10px]">Notice Period / Availability</span>
+                <span className="text-slate-900 font-semibold font-mono text-amber-900">
+                  {portfolioData.personal.noticePeriod}
+                </span>
+              </div>
+            </div>
+
             <div className="p-3.5 rounded-xl pearl-glass flex items-center gap-3">
               <Mail className="h-4 w-4 text-indigo-500 shrink-0" />
               <div className="text-xs truncate">
@@ -142,7 +186,7 @@ export function AboutSection() {
             <div className="p-3.5 rounded-xl pearl-glass flex items-center gap-3">
               <Phone className="h-4 w-4 text-sky-500 shrink-0" />
               <div className="text-xs">
-                <span className="text-slate-500 block text-[10px]">Phone</span>
+                <span className="text-slate-500 block text-[10px]">Direct Phone</span>
                 <span className="text-slate-900 font-semibold font-mono">{portfolioData.personal.phone}</span>
               </div>
             </div>
@@ -180,7 +224,7 @@ export function AboutSection() {
                   <h3 className="font-bold text-sm tracking-tight text-slate-900">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </CardContent>

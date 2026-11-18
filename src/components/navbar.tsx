@@ -4,9 +4,17 @@ import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
-import { Download, Menu, X, Sparkles, Terminal } from "lucide-react";
+import { Download, Menu, X, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { portfolioData } from "@/data/portfolio-data";
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.88a1.45 1.45 0 0 0-1.45 1.45c0 .8.65 1.45 1.45 1.45a1.45 1.45 0 0 0 1.45-1.45c0-.8-.65-1.45-1.45-1.45Z" />
+    </svg>
+  );
+}
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -16,7 +24,7 @@ export function Navbar() {
     { label: "About", href: "#about" },
     { label: "Workstation", href: "#skills" },
     { label: "Timeline", href: "#experience" },
-    { label: "Exhibition", href: "#projects" },
+    { label: "Systems", href: "#projects" },
     { label: "Connect", href: "#contact" },
   ];
 
@@ -59,8 +67,18 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Action Button */}
+        {/* Action Buttons */}
         <div className="flex items-center gap-2">
+          <a
+            href={portfolioData.personal.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="hidden sm:inline-flex items-center justify-center h-8 w-8 rounded-full border border-sky-300 bg-sky-50 text-[#0077b5] hover:bg-sky-100 transition-colors shadow-2xs"
+          >
+            <LinkedinIcon className="h-4 w-4 fill-current" />
+          </a>
+
           <a
             href={portfolioData.personal.resumePdf}
             download="Garaga_Venkatesh_Resume.pdf"
@@ -102,6 +120,15 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={portfolioData.personal.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-sky-50 text-[#0077b5] flex items-center gap-2"
+          >
+            <LinkedinIcon className="h-4 w-4 fill-current" />
+            <span>LinkedIn: venkatesh-garaga-89a561199</span>
+          </a>
           <a
             href={portfolioData.personal.resumePdf}
             download="Garaga_Venkatesh_Resume.pdf"
