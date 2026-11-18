@@ -41,15 +41,15 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-2.5 font-bold tracking-tight px-1 group"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-violet-500 text-white font-mono text-xs shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-violet-500 text-black font-mono text-xs font-bold shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
             GV
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-xs font-bold tracking-tight text-slate-800 leading-tight">
+            <span className="text-xs font-bold tracking-tight text-white leading-tight">
               Garaga Venkatesh
             </span>
-            <span className="text-[10px] text-sky-600 font-mono leading-none">
-              Full Stack Digital Twin
+            <span className="text-[10px] text-cyan-400 font-mono leading-none">
+              Full Stack Engineer
             </span>
           </div>
         </Link>
@@ -60,7 +60,7 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="px-3.5 py-1.5 rounded-full text-slate-600 hover:text-sky-600 hover:bg-sky-50/80 transition-colors"
+              className="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"
             >
               {link.label}
             </Link>
@@ -74,7 +74,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="hidden sm:inline-flex items-center justify-center h-8 w-8 rounded-full border border-sky-300 bg-sky-50 text-[#0077b5] hover:bg-sky-100 transition-colors shadow-2xs"
+            className="hidden sm:inline-flex items-center justify-center h-8 w-8 rounded-full border border-cyan-500/40 bg-cyan-950/40 text-cyan-400 hover:bg-cyan-900/60 transition-colors shadow-2xs"
           >
             <LinkedinIcon className="h-4 w-4 fill-current" />
           </a>
@@ -84,7 +84,7 @@ export function Navbar() {
             download="Garaga_Venkatesh_Resume.pdf"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "hidden sm:inline-flex h-8 rounded-full text-xs gap-1.5 bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-500 hover:opacity-95 text-white shadow-sm font-semibold"
+              "hidden sm:inline-flex h-8 rounded-full text-xs gap-1.5 bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-600 hover:opacity-95 text-black shadow-md shadow-cyan-500/20 font-bold"
             )}
           >
             <Download className="h-3.5 w-3.5" />
@@ -94,7 +94,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 hover:bg-slate-100 text-slate-600"
+            className="md:hidden flex h-8 w-8 items-center justify-center rounded-full border border-slate-700 hover:bg-slate-800 text-slate-300"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -115,7 +115,7 @@ export function Navbar() {
               key={link.label}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-sky-50 text-slate-700 hover:text-sky-600"
+              className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-cyan-500/10 text-slate-200 hover:text-cyan-400"
             >
               {link.label}
             </Link>
@@ -124,7 +124,7 @@ export function Navbar() {
             href={portfolioData.personal.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-sky-50 text-[#0077b5] flex items-center gap-2"
+            className="px-3.5 py-2 text-sm font-semibold rounded-lg hover:bg-cyan-500/10 text-cyan-400 flex items-center gap-2"
           >
             <LinkedinIcon className="h-4 w-4 fill-current" />
             <span>LinkedIn: venkatesh-garaga-89a561199</span>
@@ -134,7 +134,7 @@ export function Navbar() {
             download="Garaga_Venkatesh_Resume.pdf"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "mt-2 w-full justify-center rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-semibold"
+              "mt-2 w-full justify-center rounded-xl gap-2 bg-gradient-to-r from-cyan-500 to-indigo-600 text-black font-bold"
             )}
           >
             <Download className="h-4 w-4" />
