@@ -20,31 +20,31 @@ const categoryColorMap: Record<
 > = {
   backend: {
     cardClass: "vibrant-card-emerald",
-    iconClass: "text-emerald-400 bg-emerald-950/80 border-emerald-500/50",
-    badgeClass: "text-emerald-300 bg-emerald-950/90 border-emerald-500/40",
-    barGradient: "from-emerald-500 via-teal-400 to-cyan-400",
-    textColor: "text-emerald-400",
+    iconClass: "text-emerald-700 bg-emerald-100 border-emerald-300",
+    badgeClass: "text-emerald-800 bg-emerald-100/80 border-emerald-300",
+    barGradient: "from-emerald-500 via-teal-500 to-cyan-500",
+    textColor: "text-emerald-700",
   },
   frontend: {
     cardClass: "vibrant-card-cyan",
-    iconClass: "text-sky-400 bg-sky-950/80 border-sky-500/50",
-    badgeClass: "text-sky-300 bg-sky-950/90 border-sky-500/40",
-    barGradient: "from-sky-500 via-cyan-400 to-indigo-400",
-    textColor: "text-sky-400",
+    iconClass: "text-sky-700 bg-sky-100 border-sky-300",
+    badgeClass: "text-sky-800 bg-sky-100/80 border-sky-300",
+    barGradient: "from-sky-500 via-cyan-500 to-indigo-500",
+    textColor: "text-sky-700",
   },
   cloud: {
     cardClass: "vibrant-card-purple",
-    iconClass: "text-purple-400 bg-purple-950/80 border-purple-500/50",
-    badgeClass: "text-purple-300 bg-purple-950/90 border-purple-500/40",
-    barGradient: "from-purple-500 via-indigo-400 to-sky-400",
-    textColor: "text-purple-400",
+    iconClass: "text-purple-700 bg-purple-100 border-purple-300",
+    badgeClass: "text-purple-800 bg-purple-100/80 border-purple-300",
+    barGradient: "from-purple-500 via-indigo-500 to-sky-500",
+    textColor: "text-purple-700",
   },
   databases: {
     cardClass: "vibrant-card-amber",
-    iconClass: "text-amber-400 bg-amber-950/80 border-amber-500/50",
-    badgeClass: "text-amber-300 bg-amber-950/90 border-amber-500/40",
-    barGradient: "from-amber-500 via-orange-400 to-red-400",
-    textColor: "text-amber-400",
+    iconClass: "text-amber-700 bg-amber-100 border-amber-300",
+    badgeClass: "text-amber-900 bg-amber-100/80 border-amber-300",
+    barGradient: "from-amber-500 via-orange-500 to-rose-500",
+    textColor: "text-amber-700",
   },
 };
 
@@ -67,20 +67,20 @@ export function SkillsInteractive() {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-800 relative">
+    <section id="skills" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200/80 relative bg-transparent">
       <div className="flex flex-col items-center text-center mb-14">
-        <Badge variant="outline" className="mb-3 font-mono text-xs border-indigo-400/50 text-indigo-300 bg-indigo-950/80 px-3.5 py-1">
+        <Badge variant="outline" className="mb-3 font-mono text-xs border-indigo-300 text-indigo-800 bg-indigo-50 px-3.5 py-1">
           Scene 03 · Engineering Competencies
         </Badge>
-        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Technical Competencies &amp; System Stack
         </h2>
-        <p className="text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
+        <p className="text-slate-600 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
           Engineered across 6 years of building production-grade services, high-throughput event buses, and resilient APIs.
         </p>
 
-        {/* Filter Tabs in Multi-Color Glass */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl bg-slate-950/90 border border-slate-800 max-w-2xl">
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mt-8 p-1.5 rounded-2xl bg-slate-100 border border-slate-200 max-w-2xl">
           {tabOptions.map((tab) => (
             <button
               key={tab.id}
@@ -88,8 +88,8 @@ export function SkillsInteractive() {
               className={cn(
                 "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200",
                 activeTab === tab.id
-                  ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-md shadow-sky-500/30 scale-105"
-                  : "text-slate-300 hover:text-white hover:bg-slate-800"
+                  ? "bg-gradient-to-r from-sky-600 to-indigo-600 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/60"
               )}
             >
               {tab.label}
@@ -101,7 +101,7 @@ export function SkillsInteractive() {
       {/* Skills Grid */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatePresence>
-          {filteredCategories.map((category, idx) => {
+          {filteredCategories.map((category) => {
             const key = category.title.toLowerCase().includes("backend")
               ? "backend"
               : category.title.toLowerCase().includes("frontend")
@@ -121,14 +121,14 @@ export function SkillsInteractive() {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35 }}
               >
-                <Card className={cn("transition-all duration-300 h-full shadow-xl", theme.cardClass)}>
+                <Card className={cn("transition-all duration-300 h-full shadow-sm hover:shadow-md", theme.cardClass)}>
                   <CardContent className="p-6 sm:p-7 space-y-5">
-                    <div className="flex items-center justify-between pb-3 border-b border-slate-700/60">
+                    <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                       <div>
-                        <h3 className="text-lg font-bold tracking-tight text-white">
+                        <h3 className="text-lg font-bold tracking-tight text-slate-900">
                           {category.title}
                         </h3>
-                        <p className={cn("text-xs font-medium mt-0.5", theme.textColor)}>
+                        <p className={cn("text-xs font-semibold mt-0.5", theme.textColor)}>
                           {category.description}
                         </p>
                       </div>
@@ -141,7 +141,7 @@ export function SkillsInteractive() {
                       {category.skills.map((skill) => (
                         <div key={skill.name} className="space-y-1.5">
                           <div className="flex items-center justify-between text-xs">
-                            <span className="font-semibold text-slate-100 flex items-center gap-2">
+                            <span className="font-semibold text-slate-800 flex items-center gap-2">
                               {skill.name}
                               {skill.tag && (
                                 <span className={cn("px-2 py-0.5 rounded text-[10px] font-mono border", theme.badgeClass)}>
@@ -149,9 +149,9 @@ export function SkillsInteractive() {
                                 </span>
                               )}
                             </span>
-                            <span className="font-mono text-slate-300 font-bold">{skill.level}%</span>
+                            <span className="font-mono text-slate-600 font-bold">{skill.level}%</span>
                           </div>
-                          <div className="h-2 w-full rounded-full bg-slate-900/90 overflow-hidden border border-slate-700/80">
+                          <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200">
                             <motion.div
                               initial={{ width: 0 }}
                               whileInView={{ width: `${skill.level}%` }}

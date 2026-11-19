@@ -62,15 +62,15 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-800 relative">
+    <section id="contact" className="py-24 px-6 max-w-6xl mx-auto border-t border-slate-200/80 relative bg-transparent">
       <div className="flex flex-col items-center text-center mb-16">
-        <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-400/50 text-sky-300 bg-sky-950/80 px-3.5 py-1">
-          Chapter 06 · Connect &amp; Collaborate
+        <Badge variant="outline" className="mb-3 font-mono text-xs border-sky-300 text-sky-800 bg-sky-50 px-3.5 py-1">
+          Scene 06 · Connect &amp; Collaborate
         </Badge>
-        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
           Connect &amp; Collaborate
         </h2>
-        <p className="text-slate-300 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
+        <p className="text-slate-600 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
           Interested in full-stack architecture, high-throughput microservices, or consulting? Reach out directly via LinkedIn, Naukri, or direct transmission.
         </p>
       </div>
@@ -79,30 +79,30 @@ export function ContactSection() {
         {/* Contact Details & Profile Channels (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* Official Profiles GUI Card */}
-          <Card className="vibrant-card-cyan p-6 sm:p-7 space-y-4 shadow-xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-700/80">
-              <h3 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
-                <Briefcase className="h-4 w-4 text-sky-400" />
+          <Card className="vibrant-card-cyan p-6 sm:p-7 space-y-4 shadow-md">
+            <div className="flex items-center justify-between pb-3 border-b border-sky-100">
+              <h3 className="text-base font-bold tracking-tight text-slate-900 flex items-center gap-2">
+                <Briefcase className="h-4 w-4 text-sky-600" />
                 Verified Online Profiles
               </h3>
-              <Badge className="bg-emerald-950/90 text-emerald-300 border-emerald-500/60 text-[10px] font-mono flex items-center gap-1 font-semibold">
+              <Badge className="bg-emerald-100 text-emerald-800 border-emerald-300 text-[10px] font-mono flex items-center gap-1 font-semibold">
                 <UserCheck className="h-3 w-3" />
                 Verified
               </Badge>
             </div>
 
             {/* LinkedIn Profile Tile */}
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0077b5] text-white shadow-sm">
                     <LinkedinIcon className="h-5 w-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block leading-tight">
+                    <span className="text-xs font-bold text-slate-900 block leading-tight">
                       LinkedIn Profile
                     </span>
-                    <span className="text-[11px] text-sky-400 font-mono">
+                    <span className="text-[11px] text-sky-700 font-mono">
                       venkatesh-garaga-89a561199
                     </span>
                   </div>
@@ -113,44 +113,44 @@ export function ContactSection() {
                   rel="noopener noreferrer"
                   className={cn(
                     buttonVariants({ size: "sm" }),
-                    "h-7 px-3 rounded-lg text-xs gap-1 bg-[#0077b5] hover:bg-[#006097] text-white font-semibold"
+                    "h-7 px-3 rounded-lg text-xs gap-1 bg-[#0077b5] hover:bg-[#006097] text-white font-semibold shadow-2xs"
                   )}
                 >
                   <span>Connect</span>
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>
-              <p className="text-[11px] text-slate-300 italic">
+              <p className="text-[11px] text-slate-600 italic">
                 &ldquo;{portfolioData.personal.linkedinNote}&rdquo;
               </p>
             </div>
 
             {/* Naukri Profile Tile */}
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2.5">
+            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5 shadow-2xs">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0066cc] text-white shadow-sm">
                     <NaukriIcon className="h-5 w-5" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-white block leading-tight">
+                    <span className="text-xs font-bold text-slate-900 block leading-tight">
                       Naukri Recruiter Profile
                     </span>
-                    <span className="text-[11px] text-indigo-300 font-semibold">
+                    <span className="text-[11px] text-indigo-700 font-semibold">
                       {portfolioData.personal.naukriProfile}
                     </span>
                   </div>
                 </div>
-                <Badge className="bg-amber-950/90 text-amber-300 border-amber-500/60 text-[10px] font-mono font-semibold flex items-center gap-1">
-                  <Clock className="h-3 w-3" />
+                <Badge className="bg-amber-100 text-amber-900 border-amber-300 text-[10px] font-mono font-semibold flex items-center gap-1">
+                  <Clock className="h-3 w-3 text-amber-700" />
                   {portfolioData.personal.noticePeriod}
                 </Badge>
               </div>
               <div className="flex items-center justify-between pt-1">
-                <span className="text-[11px] text-slate-300">
+                <span className="text-[11px] text-slate-500">
                   Searchable by verified recruiters across India
                 </span>
-                <span className="text-[11px] font-mono text-emerald-300 bg-emerald-950/90 px-2 py-0.5 rounded border border-emerald-500/50">
+                <span className="text-[11px] font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-300">
                   Active
                 </span>
               </div>
@@ -158,56 +158,56 @@ export function ContactSection() {
           </Card>
 
           {/* Direct Contact Communication Card */}
-          <Card className="vibrant-card-emerald p-6 sm:p-7 space-y-4 shadow-xl">
-            <h3 className="text-base font-bold tracking-tight text-white flex items-center gap-2">
-              <MessageSquare className="h-4 w-4 text-emerald-400" />
+          <Card className="vibrant-card-emerald p-6 sm:p-7 space-y-4 shadow-md">
+            <h3 className="text-base font-bold tracking-tight text-slate-900 flex items-center gap-2">
+              <MessageSquare className="h-4 w-4 text-emerald-600" />
               Direct Communication
             </h3>
 
             <div className="space-y-3">
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-950 text-sky-400 border border-sky-500/40 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-sky-700 border border-sky-300 shrink-0 mt-0.5">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
                     Email Address
                   </span>
                   <a
                     href={`mailto:${portfolioData.personal.email}`}
-                    className="text-xs sm:text-sm font-semibold text-white hover:text-sky-400 transition-colors font-mono"
+                    className="text-xs sm:text-sm font-semibold text-slate-900 hover:text-sky-600 transition-colors font-mono"
                   >
                     {portfolioData.personal.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-950 text-emerald-400 border border-emerald-500/40 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700 border border-emerald-300 shrink-0 mt-0.5">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
                     Direct Phone / WhatsApp
                   </span>
                   <a
                     href={`tel:${portfolioData.personal.phone.replace(/[^0-9+]/g, "")}`}
-                    className="text-xs sm:text-sm font-semibold text-white hover:text-emerald-400 transition-colors font-mono"
+                    className="text-xs sm:text-sm font-semibold text-slate-900 hover:text-emerald-700 transition-colors font-mono"
                   >
                     {portfolioData.personal.phone}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-950 text-purple-400 border border-purple-500/40 shrink-0 mt-0.5">
+              <div className="flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-700 border border-purple-300 shrink-0 mt-0.5">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">
+                  <span className="text-[10px] text-slate-500 uppercase font-mono block">
                     Current Location &amp; Base
                   </span>
-                  <span className="text-xs sm:text-sm font-semibold text-white">
+                  <span className="text-xs sm:text-sm font-semibold text-slate-900">
                     {portfolioData.personal.location}
                   </span>
                 </div>
@@ -216,18 +216,18 @@ export function ContactSection() {
           </Card>
 
           {/* Download Resume Card */}
-          <Card className="vibrant-card-amber p-6 sm:p-7 text-center space-y-4 shadow-xl">
+          <Card className="vibrant-card-amber p-6 sm:p-7 text-center space-y-4 shadow-md">
             <div className="flex justify-center">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500 text-slate-950 font-bold shadow-lg shadow-amber-500/30">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-500 text-white font-bold shadow-md shadow-amber-500/20">
                 <Download className="h-5 w-5" />
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-base text-white">
+              <h4 className="font-bold text-base text-slate-900">
                 Official Curriculum Vitae
               </h4>
-              <p className="text-xs text-slate-300 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 Verified career documentation with complete ADA, ERP, and project architectural deliverables.
               </p>
             </div>
@@ -237,7 +237,7 @@ export function ContactSection() {
               download="Garaga_Venkatesh_Resume.pdf"
               className={cn(
                 buttonVariants({ size: "default" }),
-                "w-full rounded-xl gap-2 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:brightness-110 text-slate-950 shadow-md font-bold"
+                "w-full rounded-xl gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:brightness-105 text-white shadow-sm font-bold"
               )}
             >
               <Download className="h-4 w-4" />
@@ -248,11 +248,11 @@ export function ContactSection() {
 
         {/* Interactive Contact Form (7 cols) */}
         <div className="lg:col-span-7">
-          <Card className="bg-[#111a2e] border border-slate-800 p-6 sm:p-8 shadow-2xl">
-            <h3 className="text-lg font-bold tracking-tight text-white mb-1">
+          <Card className="bg-white border border-slate-200 p-6 sm:p-8 shadow-xl">
+            <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-1">
               Send a Direct Message
             </h3>
-            <p className="text-xs text-slate-300 mb-6 font-normal">
+            <p className="text-xs text-slate-500 mb-6 font-normal">
               Have an engineering opportunity, open senior full-stack role, or architectural consulting query? Send a message below.
             </p>
 
@@ -260,15 +260,15 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-8 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-center space-y-3"
+                className="p-8 rounded-xl bg-emerald-50 border border-emerald-200 text-center space-y-3"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-900 text-emerald-400 mx-auto">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 mx-auto">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <h4 className="font-bold text-white text-lg">
+                <h4 className="font-bold text-slate-900 text-lg">
                   Transmission Received
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-200 max-w-sm mx-auto font-normal">
+                <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto font-normal">
                   Thank you for reaching out. Your message has been routed to Garaga Venkatesh. You will receive a response shortly.
                 </p>
                 <Button
@@ -278,7 +278,7 @@ export function ContactSection() {
                     setSubmitted(false);
                     setFormState({ name: "", email: "", subject: "", message: "" });
                   }}
-                  className="mt-4 border-emerald-400 text-emerald-300 hover:bg-emerald-900 rounded-lg text-xs"
+                  className="mt-4 border-emerald-300 text-emerald-800 hover:bg-emerald-100 rounded-lg text-xs"
                 >
                   Send Another Message
                 </Button>
@@ -287,7 +287,7 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-200">
+                    <label className="text-xs font-semibold text-slate-700">
                       Your Name
                     </label>
                     <input
@@ -298,12 +298,12 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormState({ ...formState, name: e.target.value })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-slate-200">
+                    <label className="text-xs font-semibold text-slate-700">
                       Your Email Address
                     </label>
                     <input
@@ -314,13 +314,13 @@ export function ContactSection() {
                       onChange={(e) =>
                         setFormState({ ...formState, email: e.target.value })
                       }
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-200">
+                  <label className="text-xs font-semibold text-slate-700">
                     Subject / Discussion Topic
                   </label>
                   <input
@@ -331,12 +331,12 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, subject: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-200">
+                  <label className="text-xs font-semibold text-slate-700">
                     Message Details
                   </label>
                   <textarea
@@ -347,14 +347,14 @@ export function ContactSection() {
                     onChange={(e) =>
                       setFormState({ ...formState, message: e.target.value })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-400 transition-all resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full rounded-xl gap-2 bg-gradient-to-r from-sky-500 to-indigo-600 hover:brightness-110 text-white font-semibold text-xs sm:text-sm py-5 shadow-lg shadow-sky-500/25"
+                  className="w-full rounded-xl gap-2 bg-gradient-to-r from-sky-600 to-indigo-600 hover:brightness-105 text-white font-semibold text-xs sm:text-sm py-5 shadow-md shadow-sky-500/20"
                 >
                   {loading ? (
                     <span className="flex items-center gap-2">
